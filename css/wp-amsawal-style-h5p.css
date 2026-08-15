@@ -1,0 +1,836 @@
+/* ────────────────────────────────────────────────────────
+ * H5P AMSAWAL OVERHAUL — Educational theme with Atlas branding
+ *
+ * Uses Amsawal CSS tokens for visual consistency.
+ * Supports: dark mode, safe-area-inset, reduced motion,
+ * high contrast mode, and all common H5P types.
+ * ──────────────────────────────────────────────────────── */
+
+/* ── 1. H5P CONTENT WRAPPER ── */
+
+.h5p-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: none;
+  background: transparent;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── 2. H5P CARD (Atlas blue educational wrapper) ── */
+
+.h5p-card {
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 24px;
+  margin: 16px auto;
+  max-width: 700px;
+  box-shadow: var(--amsawal-shadow-lg);
+}
+
+.h5p-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--amsawal-border);
+}
+
+.h5p-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: rgba(var(--color-primary), 0.08);
+  border-radius: var(--amsawal-radius-sm);
+  flex-shrink: 0;
+}
+
+.h5p-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.h5p-card__title {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--amsawal-text);
+}
+
+.h5p-card__subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--amsawal-text-muted);
+  font-weight: 600;
+}
+
+/* ── 3. H5P BUTTONS (Check, Next, Retry) ── */
+
+.h5p-question-buttons,
+.h5p-joule-footer {
+  position: relative !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  padding: 20px !important;
+  border-top: 2px solid var(--amsawal-border) !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  margin-top: 16px !important;
+  border-radius: 0 0 var(--amsawal-radius-lg) var(--amsawal-radius-lg) !important;
+}
+
+.h5p-button,
+.h5p-joule-button,
+.h5p-question-check-answer,
+.h5p-question-show-solution,
+.h5p-question-retry,
+.h5p-flashcards-results-retry-button {
+  background: var(--amsawal-primary) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--amsawal-radius) !important;
+  padding: 16px 32px !important;
+  font-family: inherit !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 6px 0 var(--amsawal-primary-dark) !important;
+  transition: transform var(--amsawal-duration-fast) var(--amsawal-ease-out),
+              box-shadow var(--amsawal-duration-fast) var(--amsawal-ease-out) !important;
+  cursor: pointer !important;
+  min-height: 52px !important;
+  touch-action: manipulation;
+}
+
+.h5p-button:hover,
+.h5p-joule-button:hover,
+.h5p-question-check-answer:hover {
+  filter: brightness(1.08);
+}
+
+.h5p-button:active,
+.h5p-joule-button:active,
+.h5p-question-check-answer:active {
+  transform: translateY(6px) !important;
+  box-shadow: 0 0 0 transparent !important;
+}
+
+/* Secondary button — Show solution */
+.h5p-question-show-solution,
+.h5p-flashcards-results-retry-button {
+  background: var(--amsawal-border) !important;
+  color: var(--amsawal-text) !important;
+  box-shadow: 0 6px 0 rgba(var(--color-primary), 0.12) !important;
+}
+
+.h5p-question-show-solution:active,
+.h5p-flashcards-results-retry-button:active {
+  transform: translateY(6px) !important;
+  box-shadow: 0 0 0 transparent !important;
+}
+
+/* ── 4. FLASHCARDS ── */
+
+.h5p-flashcards .h5p-flashcards-card {
+  border: 2px solid rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-2xl) !important;
+  box-shadow: 0 8px 0 rgba(var(--color-eclipse), 0.10),
+              0 8px 0 rgb(var(--color-swan)) !important;
+  background: var(--duo-bg-card) !important;
+  transition: transform 150ms var(--spring),
+              box-shadow 150ms var(--spring) !important;
+  cursor: pointer;
+  min-height: 200px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--duo-text);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.h5p-flashcards .h5p-flashcards-card:active {
+  transform: translateY(8px) scale(0.98) !important;
+  box-shadow: 0 0 0 transparent !important;
+}
+
+.h5p-flashcards .h5p-flashcards-card:hover:not(:active) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 rgba(var(--color-eclipse), 0.12),
+              0 10px 0 rgb(var(--color-swan)) !important;
+}
+
+.h5p-flashcards .h5p-flashcards-card.h5p-flashcards-correct {
+  border-color: rgb(var(--color-owl)) !important;
+  box-shadow: 0 8px 0 rgba(var(--color-tree-frog), 0.4),
+              0 8px 0 rgb(var(--color-owl)) !important;
+  background: rgba(var(--color-owl), 0.06) !important;
+}
+
+.h5p-flashcards .h5p-flashcards-card.h5p-flashcards-wrong {
+  border-color: rgb(var(--color-fire-ant)) !important;
+  box-shadow: 0 8px 0 rgba(var(--color-cardinal), 0.4),
+              0 8px 0 rgb(var(--color-fire-ant)) !important;
+  background: rgba(var(--color-fire-ant), 0.06) !important;
+}
+
+/* ── 5. FLASHCARDS INPUT ── */
+
+.h5p-flashcards .h5p-flashcards-input {
+  border: 3px solid rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  font-family: var(--duo-font) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  color: var(--duo-text) !important;
+  background: var(--duo-bg-card) !important;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out) !important;
+  width: 100%;
+}
+
+.h5p-flashcards .h5p-flashcards-input:focus {
+  border-color: rgb(var(--color-macaw)) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(var(--color-macaw), 0.15) !important;
+}
+
+/* ── 6. MULTIPLE CHOICE (MCQ) ── */
+
+.h5p-multichoice .h5p-answer {
+  display: block;
+  width: 100% !important;
+  padding: var(--space-4) var(--space-5) !important;
+  margin: var(--space-2) 0 !important;
+  background: var(--duo-bg-card) !important;
+  border: 2px solid rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: var(--duo-font) !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: var(--duo-text) !important;
+  cursor: pointer !important;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              transform 100ms var(--spring) !important;
+  text-align: left !important;
+}
+
+.h5p-multichoice .h5p-answer:hover {
+  border-color: rgb(var(--color-macaw)) !important;
+  background: rgba(var(--color-macaw), 0.04) !important;
+}
+
+.h5p-multichoice .h5p-answer:active {
+  transform: scale(0.98) !important;
+}
+
+.h5p-multichoice .h5p-answer.h5p-correct {
+  border-color: rgb(var(--color-owl)) !important;
+  background: rgba(var(--color-owl), 0.10) !important;
+  color: rgb(var(--color-tree-frog)) !important;
+}
+
+.h5p-multichoice .h5p-answer.h5p-wrong {
+  border-color: rgb(var(--color-fire-ant)) !important;
+  background: rgba(var(--color-fire-ant), 0.10) !important;
+  color: rgb(var(--color-fire-ant)) !important;
+}
+
+/* ── 7. DIALOG CARDS ── */
+
+.h5p-dialogcards .h5p-dialogcards-card {
+  border: 2px solid rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--elev-1) !important;
+  background: var(--duo-bg-card) !important;
+  overflow: hidden;
+}
+
+.h5p-dialogcards .h5p-dialogcards-card .h5p-dialogcards-card-content {
+  padding: var(--space-6) !important;
+  font-size: 1.15rem;
+  color: var(--duo-text);
+}
+
+/* ── 8. FILL IN THE BLANKS ── */
+
+.h5p-blanks .h5p-input-wrapper input {
+  border: 3px solid rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  font-family: var(--duo-font) !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: var(--duo-text) !important;
+  background: var(--duo-bg-card) !important;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.h5p-blanks .h5p-input-wrapper input:focus {
+  border-color: rgb(var(--color-macaw)) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(var(--color-macaw), 0.15) !important;
+}
+
+.h5p-blanks .h5p-correct input {
+  border-color: rgb(var(--color-owl)) !important;
+  background: rgba(var(--color-owl), 0.06) !important;
+}
+
+.h5p-blanks .h5p-wrong input {
+  border-color: rgb(var(--color-fire-ant)) !important;
+  background: rgba(var(--color-fire-ant), 0.06) !important;
+}
+
+/* ── 9. TRUE / FALSE ── */
+
+.h5p-true-false .h5p-true-false-answer {
+  display: block;
+  width: 100% !important;
+  padding: var(--space-5) !important;
+  margin: var(--space-2) 0 !important;
+  background: var(--duo-bg-card) !important;
+  border: 2px solid rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: var(--duo-font) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--duo-text) !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out);
+}
+
+.h5p-true-false .h5p-true-false-answer:hover {
+  border-color: rgb(var(--color-macaw)) !important;
+  background: rgba(var(--color-macaw), 0.04) !important;
+}
+
+/* ── 10. DRAG & DROP ── */
+
+.h5p-drag .h5p-draggable {
+  padding: var(--space-2) var(--space-4) !important;
+  background: var(--duo-bg-card) !important;
+  border: 2px solid rgb(var(--color-macaw)) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: var(--duo-font) !important;
+  font-weight: 700 !important;
+  color: rgb(var(--color-macaw)) !important;
+  cursor: grab;
+  transition: transform 100ms var(--spring);
+}
+
+.h5p-drag .h5p-draggable:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+.h5p-drag .h5p-dropzone {
+  border: 2px dashed rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-md) !important;
+  min-height: 48px;
+  background: rgba(var(--color-polar), 0.5) !important;
+}
+
+.h5p-drag .h5p-dropzone.h5p-drag-hover {
+  border-color: rgb(var(--color-owl)) !important;
+  background: rgba(var(--color-owl), 0.08) !important;
+}
+
+/* ── 11. MARK THE WORDS ── */
+
+.h5p-mark-the-words .h5p-word-selectable {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.h5p-mark-the-words .h5p-word-selectable.h5p-marked {
+  background: rgba(var(--color-owl), 0.25);
+  color: rgb(var(--color-tree-frog));
+  font-weight: 700;
+}
+
+/* ── 12. PROGRESS BAR (H5P nativa) ── */
+
+.h5p-progressbar {
+  background: rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-pill) !important;
+  height: 12px !important;
+  overflow: hidden;
+}
+
+.h5p-progressbar .h5p-progressbar-front {
+  background: rgb(var(--color-owl)) !important;
+  border-radius: var(--radius-pill) !important;
+  transition: width var(--duration-slower) var(--ease-out) !important;
+}
+
+/* ── 13. FEEDBACK TEXT ── */
+
+.h5p-feedback {
+  font-family: var(--duo-font) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  padding: var(--space-3) var(--space-4) !important;
+  border-radius: var(--radius-sm) !important;
+  margin-top: var(--space-3) !important;
+}
+
+.h5p-feedback.h5p-correct {
+  background: rgba(var(--color-owl), 0.10) !important;
+  color: rgb(var(--color-tree-frog)) !important;
+  border-left: 4px solid rgb(var(--color-owl));
+}
+
+.h5p-feedback.h5p-wrong {
+  background: rgba(var(--color-fire-ant), 0.10) !important;
+  color: rgb(var(--color-fire-ant)) !important;
+  border-left: 4px solid rgb(var(--color-fire-ant));
+}
+
+/* ── 14. SCORE BAR ── */
+
+.h5p-score-bar {
+  background: rgb(var(--color-swan)) !important;
+  border-radius: var(--radius-pill) !important;
+  height: 16px !important;
+  overflow: hidden;
+}
+
+.h5p-score-bar .h5p-score-bar-filled {
+  background: linear-gradient(90deg, rgb(var(--color-owl)) 0%, rgb(var(--color-turtle)) 100%) !important;
+  border-radius: var(--radius-pill) !important;
+}
+
+/* ── 15. H5P LOADING / PENDING ── */
+
+.h5p-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-polar)) 0%,
+    rgb(var(--color-swan)) 50%,
+    rgb(var(--color-polar)) 100%
+  );
+  background-size: 200% 100%;
+  animation: h5p-shimmer 1.4s linear infinite;
+}
+
+.h5p-skeleton::after {
+  content: '⏳ Cargando actividad…';
+  color: var(--duo-text-muted);
+  font-family: var(--duo-font);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@keyframes h5p-shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ── 16. H5P RESULTS SUMMARY (resumen post-actividad) ── */
+
+.h5p-results-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  margin: var(--space-4) auto;
+  max-width: 400px;
+  background: var(--duo-bg-card);
+  border: 2px solid rgb(var(--color-swan));
+  border-radius: var(--radius-xl);
+  text-align: center;
+  box-shadow: var(--elev-1);
+}
+
+.h5p-results-summary__icon {
+  font-size: 4rem;
+  animation: result-pop 400ms var(--spring) backwards;
+}
+
+@keyframes result-pop {
+  0%   { transform: scale(0) rotate(-30deg); }
+  60%  { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.h5p-results-summary__score {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--duo-text);
+}
+
+.h5p-results-summary__score--perfect { color: rgb(var(--color-owl)); }
+.h5p-results-summary__score--good    { color: rgb(var(--color-macaw)); }
+.h5p-results-summary__score--ok      { color: rgb(var(--color-fox)); }
+.h5p-results-summary__score--low     { color: rgb(var(--color-fire-ant)); }
+
+.h5p-results-summary__label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--duo-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Stats row inside results summary */
+.duo-results-stats {
+  display: flex;
+  gap: var(--space-6);
+  margin-top: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--duo-text-muted);
+  font-weight: 700;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── 17. H5P TABLE / TAB (pestañas de navegación H5P) ── */
+
+.h5p-tab {
+  font-family: var(--duo-font) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ── 18. OCULTAR ELEMENTOS INNECESARIOS ── */
+
+.h5p-flashcards .h5p-description,
+.h5p-flashcards .h5p-progress {
+  display: none !important;
+}
+
+/* ── 19. DARK MODE ── */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .h5p-content {
+    color: var(--duo-text);
+  }
+
+  :root:not([data-theme="light"]) .h5p-question-buttons,
+  :root:not([data-theme="light"]) .h5p-joule-footer {
+    background: rgba(var(--color-snow-always-dark), 0.95) !important;
+    border-color: rgb(var(--color-swan)) !important;
+  }
+
+  :root:not([data-theme="light"]) .h5p-card {
+    background: var(--duo-bg-card);
+    border-color: var(--duo-border);
+  }
+
+  :root:not([data-theme="light"]) .h5p-card__header {
+    border-color: var(--duo-border);
+  }
+
+  :root:not([data-theme="light"]) .h5p-question-show-solution,
+  :root:not([data-theme="light"]) .h5p-flashcards-results-retry-button {
+    background: rgba(var(--color-snow-always-dark), 0.5) !important;
+    color: var(--duo-text) !important;
+  }
+
+  :root:not([data-theme="light"]) .h5p-blanks .h5p-input-wrapper input {
+    background: var(--duo-bg-card) !important;
+    border-color: var(--duo-border) !important;
+    color: var(--duo-text) !important;
+  }
+
+  :root:not([data-theme="light"]) .h5p-results-summary {
+    background: var(--duo-bg-card);
+    border-color: var(--duo-border);
+  }
+
+  :root:not([data-theme="light"]) .h5p-skeleton {
+    background: linear-gradient(90deg, rgb(var(--color-snow-always-dark)) 0%, #2a2e36 50%, rgb(var(--color-snow-always-dark)) 100%);
+    background-size: 200% 100%;
+  }
+}
+
+[data-theme="dark"] .h5p-content {
+  color: var(--duo-text);
+}
+
+[data-theme="dark"] .h5p-question-buttons,
+[data-theme="dark"] .h5p-joule-footer {
+  background: rgba(var(--color-snow-always-dark), 0.95) !important;
+  border-color: rgb(var(--color-swan)) !important;
+}
+
+[data-theme="dark"] .h5p-card {
+  background: var(--duo-bg-card);
+  border-color: var(--duo-border);
+}
+
+[data-theme="dark"] .h5p-card__header {
+  border-color: var(--duo-border);
+}
+
+[data-theme="dark"] .h5p-question-show-solution,
+[data-theme="dark"] .h5p-flashcards-results-retry-button {
+  background: rgba(var(--color-snow-always-dark), 0.5) !important;
+  color: var(--duo-text) !important;
+}
+
+[data-theme="dark"] .h5p-blanks .h5p-input-wrapper input {
+  background: var(--duo-bg-card) !important;
+  border-color: var(--duo-border) !important;
+  color: var(--duo-text) !important;
+}
+
+[data-theme="dark"] .h5p-results-summary {
+  background: var(--duo-bg-card);
+  border-color: var(--duo-border);
+}
+
+[data-theme="dark"] .h5p-skeleton {
+  background: linear-gradient(90deg, rgb(var(--color-snow-always-dark)) 0%, #2a2e36 50%, rgb(var(--color-snow-always-dark)) 100%);
+  background-size: 200% 100%;
+}
+
+/* ── 20. REDUCED MOTION ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .h5p-skeleton,
+  .h5p-results-summary__icon {
+    animation: none !important;
+  }
+
+  .h5p-question-buttons,
+  .h5p-joule-footer,
+  .h5p-answer,
+  .h5p-flashcards-card,
+  .h5p-button {
+    transition: none !important;
+  }
+}
+
+/* ── 21. HIGH CONTRAST MODE ── */
+
+@media (prefers-contrast: more) {
+  .h5p-answer,
+  .h5p-flashcards-card,
+  .h5p-true-false-answer {
+    border-width: 3px !important;
+  }
+}
+
+/* ── 22. MOBILE ── */
+
+@media (max-width: 600px) {
+  .h5p-card {
+    padding: var(--space-4);
+    margin: var(--space-2) auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .h5p-question-buttons,
+  .h5p-joule-footer {
+    padding: var(--space-4) !important;
+    padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)) !important;
+    flex-wrap: wrap;
+  }
+
+  .h5p-button,
+  .h5p-joule-button,
+  .h5p-question-check-answer {
+    padding: var(--space-3) var(--space-6) !important;
+    font-size: 0.95rem !important;
+    min-height: 48px !important;
+    flex: 1;
+  }
+}
+
+/* ── 23. CUSTOM FEEDBACK BAR (Amsawal, injected inside H5P iframe) ── */
+
+.duo-feedback-bar {
+  position: relative;
+  margin: 12px 0;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 12px;
+  opacity: 0;
+  animation: duo-feedback-enter 350ms ease-out forwards;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.duo-feedback-bar.is-correct {
+  background: linear-gradient(135deg, rgb(var(--color-tree-frog)), rgb(var(--color-success)));
+  color: #fff;
+}
+
+.duo-feedback-bar.is-wrong {
+  background: linear-gradient(135deg, rgb(var(--color-fire-ant)), rgb(var(--color-cardinal)));
+  color: #fff;
+}
+
+.duo-feedback-bar.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.duo-feedback-icon {
+  font-size: 1.6rem;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.duo-feedback-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.duo-feedback-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+.duo-feedback-message {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.duo-feedback-actions {
+  flex-shrink: 0;
+}
+
+.duo-feedback-btn {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 150ms ease, border-color 150ms ease;
+  position: relative;
+  z-index: 1001;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.duo-feedback-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.duo-feedback-btn:active {
+  transform: scale(0.96);
+}
+
+@keyframes duo-feedback-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile: H5P buttons and feedback bar flow inline (no fixed positioning) */
+
+/* ── 24. H5P SCORE DISPLAY (fixes "1/1" rendering issues) ── */
+
+/* Ensure the score text is visible and not clipped */
+.h5p-question-score,
+.h5p-question-result,
+.h5p-score-visual {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--amsawal-text, #2c3e50) !important;
+  padding: 4px 8px !important;
+  line-height: 1.4 !important;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix score bar percentage text alignment */
+.h5p-score-bar-description {
+  font-size: 0.85rem !important;
+  color: var(--amsawal-text-muted, #5a6a6b) !important;
+  margin-top: 4px !important;
+}
+
+/* Ensure H5P question container doesn't clip score output */
+.h5p-question {
+  overflow: visible !important;
+}
+
+/* H5P question buttons container — inline flow (not fixed) */
+.h5p-question-buttons {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin-top: 16px !important;
+  padding: 12px 0 !important;
+  border-radius: var(--radius-sm, 8px) !important;
+}
+
+/* H5P question check button styling */
+.h5p-question-check-answer {
+  background: rgb(var(--color-primary)) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-sm, 8px) !important;
+  padding: 12px 28px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  cursor: pointer !important;
+  box-shadow: var(--elev-1, 0 1px 3px rgba(0,0,0,0.1)) !important;
+  transition: transform 100ms ease !important;
+}
+
+.h5p-question-check-answer:hover {
+  transform: scale(1.02) !important;
+}
+
+.h5p-question-check-answer:active {
+  transform: scale(0.98) !important;
+}
+
+/* H5P retry button */
+.h5p-question-retry {
+  background: rgba(var(--color-primary), 0.1) !important;
+  color: rgb(var(--color-primary)) !important;
+  border: 2px solid rgba(var(--color-primary), 0.3) !important;
+  border-radius: var(--radius-sm, 8px) !important;
+  padding: 10px 24px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+

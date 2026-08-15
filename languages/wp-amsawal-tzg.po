@@ -1,0 +1,140 @@
+# WP Amsawal - Tamazight (Tarifit) Translations
+# Copyright (C) 2026 Amsawal Project
+# This file is distributed under the same license as the WP Amsawal plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Amsawal 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-09 12:00+0000\n"
+"PO-Revision-Date: 2026-06-09 12:00+0000\n"
+"Last-Translator: Amsawal Team - Tarifit\n"
+"Language-Team: Tamazight (Tarifit)\n"
+"Language: tzg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wp-amsawal-view.php
+msgid "Sección"
+msgstr "Tasekkurt"
+
+#: wp-amsawal-view.php
+msgid "Lección"
+msgstr "Tamsirt"
+
+#: wp-amsawal-view.php
+msgid "EMPEZAR"
+msgstr "BDU"
+
+#: wp-amsawal-view.php
+msgid "COMPLETADO"
+msgstr "YEMMA"
+
+#: wp-amsawal-view.php
+msgid "BLOQUEADO"
+msgstr "YEGDEL"
+
+#: wp-amsawal-view.php
+msgid "GUÍA"
+msgstr "AMNIR"
+
+#: wp-amsawal-view.php
+msgid "TEST"
+msgstr "AKTAR"
+
+#: wp-amsawal-view.php
+msgid "INFO"
+msgstr "TALQIT"
+
+#: wp-amsawal-view.php
+msgid "Racha"
+msgstr "Tallunt"
+
+#: wp-amsawal-view.php
+msgid "Estrella"
+msgstr "Itri"
+
+#: wp-amsawal-view.php
+msgid "Completado"
+msgstr "Yemma"
+
+#: wp-amsawal-view.php
+msgid "Bloqueado"
+msgstr "Yegdel"
+
+#: wp-amsawal-view.php
+msgid "días"
+msgstr "ussan"
+
+#: wp-amsawal-view.php
+msgid "Nivel"
+msgstr "Aswir"
+
+#: wp-amsawal-view.php
+msgid "XP"
+msgstr "XP"
+
+#: wp-amsawal-view.php
+msgid "Monedas"
+msgstr "Tibḥirin"
+
+#: wp-amsawal-view.php
+msgid "Vidas"
+msgstr "Tudrin"
+
+#: wp-amsawal-view.php
+msgid "Ligas"
+msgstr "Tiliga"
+
+#: wp-amsawal-view.php
+msgid "Perfil"
+msgstr "Amaḍal"
+
+#: wp-amsawal-view.php
+msgid "Aprender"
+msgstr "Ɛlem"
+
+#: wp-amsawal-view.php
+msgid "Notas"
+msgstr "Tizmilin"
+
+#: wp-amsawal-view.php
+msgid "Top Monedas"
+msgstr "Tibḥirin n ufella"
+
+#: wp-amsawal-view.php
+msgid "Ver ligas"
+msgstr "Ẓer tiliga"
+
+#: wp-amsawal-view.php
+msgid "Gana"
+msgstr "Erbe"
+
+#: wp-amsawal-view.php
+msgid "hoy"
+msgstr "ass-a"
+
+#: wp-amsawal-view.php
+msgid "¡Azul, admin!"
+msgstr "Azul, admin!"
+
+#: wp-amsawal-view.php
+msgid "Primeros pasos: El alfabeto"
+msgstr "Isekka imezwura: Alfabet"
+
+#: wp-amsawal-view.php
+msgid "Saludos y Presentaciones"
+msgstr "Tisellafin d Tiseggamin"
+
+#: wp-amsawal-view.php
+msgid "Números y Tiempo"
+msgstr "Imḍanen d Wemḍiq"
+
+#: wp-amsawal-view.php
+msgid "Familia y Personas"
+msgstr "Tawacult d Medden"
+
+#: wp-amsawal-view.php
+msgid "Adjetivos y Descripciones"
+msgstr "Ismawen d Tifawin"

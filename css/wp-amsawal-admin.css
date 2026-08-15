@@ -1,0 +1,40 @@
+
+/*-----------------------------------*\
+  #ADMIN-SPECIFIC STYLES (F2-5: Unified CSS)
+\*-----------------------------------*/
+
+/* WP 7.0 Modern Theme Compatibility */
+.wp-admin .nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+}
+.wp-admin .nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  color: #0073aa;
+}
+.wp-admin .nav-tabs .nav-link.active {
+  color: #23282d;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+.wp-admin .tab-content {
+  padding-top: 20px;
+}
+.wp-admin .widefat {
+  border-spacing: 0;
+  width: 100%;
+  clear: both;
+  margin: 0;
+}
+.wp-admin .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0,0,0,0.02);
+}
+.wp-admin .table-bordered th,
+.wp-admin .table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+/* DataTables Loader */
+.duo-dt-loader {

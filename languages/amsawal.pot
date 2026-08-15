@@ -1,0 +1,238 @@
+# Copyright (C) 2026 Amsawal
+# This file is distributed under the GPL3 License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Amsawal Reloaded 0.0.2-preta\n"
+"Report-Msgid-Bugs-To: https://github.com/anomalyco/opencode/issues\n"
+"POT-Creation-Date: 2026-06-04T12:00:00+00:00\n"
+"Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"X-Domain: amsawal\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-WP-Text-Domain: amsawal\n"
+
+#. translators: %s: user display name
+#: wp-amsawal-menu.php:84
+msgid "¡Eh, %s! Hoy toca descansar, las vidas vuelven pronto. 🛌"
+msgstr ""
+
+#. translators: %s: user display name
+#: wp-amsawal-menu.php:88
+#, php-format
+msgid "¡%s, %d días seguidos! Eres una leyenda. 🔥"
+msgstr ""
+
+#. translators: %s: user display name
+#: wp-amsawal-menu.php:94
+msgid "¡%s, llevas una racha increíble! 💪"
+msgstr ""
+
+#. translators: %s: user display name
+#: wp-amsawal-menu.php:100
+msgid "¡Cuidado, %s, te queda poca vida! ⚠️"
+msgstr ""
+
+#. translators: %s: user display name
+#: wp-amsawal-menu.php:106
+msgid "¡Azul, %s! 👋"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Racha de 1 día"
+msgstr ""
+
+#. translators: %d: streak days
+#: wp-amsawal-menu.php
+#, php-format
+msgid "Racha de %d días"
+msgstr ""
+
+#. translators: %d: lives
+#: wp-amsawal-menu.php
+#, php-format
+msgid "Vidas restantes: %d"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Aprender"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Ligas"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Notas"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Perfil"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Mascota Yaz"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Navegación principal"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Navegación móvil"
+msgstr ""
+
+#: wp-amsawal-ai.php
+msgid "No autorizado"
+msgstr ""
+
+#: wp-amsawal-ai.php
+msgid "Faltan parámetros"
+msgstr ""
+
+#. translators: 1: activity type, 2: lesson title, 3: H5P count suffix
+#: wp-amsawal-ai.php
+#, php-format
+msgid "Contenido '%1$s' generado para %2$s%3$s"
+msgstr ""
+
+#: wp-amsawal-ai.php
+msgid "H5P real"
+msgid_plural "H5P reales"
+msgstr[0] ""
+msgstr[1] ""
+
+#: wp-amsawal-ai.php
+msgid "El texto está vacío."
+msgstr ""
+
+#: wp-amsawal-ai.php
+msgid "El modelo devolvió una respuesta no válida. Inténtalo de nuevo."
+msgstr ""
+
+#: wp-amsawal-ai.php
+msgid "Mensaje vacío"
+msgstr ""
+
+#: wp-amsawal-helpers.php
+msgid "Has hecho demasiadas solicitudes. Espera un momento e inténtalo de nuevo."
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Por favor, escribe algo primero."
+msgstr ""
+
+#: wp-amsawal.php
+msgid "⏳ Analizando..."
+msgstr ""
+
+#: wp-amsawal.php
+msgid "✅ Enviar para corrección (IA)"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "❌ Error (Reintentar)"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "⏱️ Tiempo agotado (Reintentar)"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "No se pudo evaluar el ensayo. Inténtalo de nuevo en unos segundos."
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Has hecho demasiadas solicitudes. Espera un momento."
+msgstr ""
+
+#: wp-amsawal.php
+msgid "❌ Error de red"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Pensando…"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Historial borrado. ¡Pregúntame lo que quieras!"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Te has quedado sin vidas ❤️"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Es normal. Repasar lo difícil es como se aprende. Elige qué quieres hacer:"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Repasar mis errores"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Volver al mapa"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Cerrar"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Compartir en Twitter"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Continuar"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Volver"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Notificaciones"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Vidas restantes: %d"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Racha de 1 día"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Racha de %d días"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "Sin repasos pendientes"
+msgstr ""
+
+#: wp-amsawal.php
+msgid "1 ítem para repasar hoy"
+msgstr ""
+
+#: wp-amsawal.php
+msgctxt "plural"
+msgid "%d ítems para repasar hoy"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Ligas"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgid "Compite con tus amigos y sube en la clasificación"
+msgstr ""
+
+#: wp-amsawal-menu.php
+msgctxt "plural"
+msgid "%d ítem para repasar hoy"
+msgid_plural "%d ítems para repasar hoy"
+msgstr ""

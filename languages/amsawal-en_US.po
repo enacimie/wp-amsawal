@@ -1,0 +1,209 @@
+# English (United States) translation starter for Amsawal Reloaded.
+# This file is provided as a starting point. Review by a native speaker is
+# recommended before shipping. To compile to .mo run:
+#   msgfmt -o amsawal-en_US.mo amsawal-en_US.po
+msgid ""
+msgstr ""
+"Project-Id-Version: Amsawal Reloaded 0.0.2-preta\n"
+"Report-Msgid-Bugs-To: https://github.com/anomalyco/opencode/issues\n"
+"POT-Creation-Date: 2026-06-04T12:00:00+00:00\n"
+"PO-Revision-Date: 2026-06-04T12:00:00+00:00\n"
+"Last-Translator: opencode <noreply@opencode.ai>\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: amsawal\n"
+"X-WP-Text-Domain: amsawal\n"
+
+#: wp-amsawal-view.php
+msgid "Cerrar"
+msgstr "Close"
+
+#: wp-amsawal-view.php
+msgid "Continuar"
+msgstr "Continue"
+
+#: wp-amsawal-view.php
+msgid "Volver"
+msgstr "Back"
+
+#: wp-amsawal-view.php
+msgid "Notificaciones"
+msgstr "Notifications"
+
+#: wp-amsawal-view.php
+msgid "Compartir en Twitter"
+msgstr "Share on Twitter"
+
+#: wp-amsawal.php
+msgid "Vidas restantes: %d"
+msgstr "Lives remaining: %d"
+
+#: wp-amsawal.php
+msgid "Racha de 1 día"
+msgstr "1-day streak"
+
+#: wp-amsawal.php
+msgid "Racha de %d días"
+msgstr "%d-day streak"
+
+#: wp-amsawal.php
+msgid "Sin repasos pendientes"
+msgstr "No reviews due"
+
+#: wp-amsawal.php
+msgid "1 ítem para repasar hoy"
+msgid_plural "%d ítems para repasar hoy"
+msgstr[0] "1 item to review today"
+msgstr[1] "%d items to review today"
+
+#: wp-amsawal-menu.php
+msgid "Ligas"
+msgstr "Leaderboards"
+
+#: wp-amsawal-menu.php
+msgid "Compite con tus amigos y sube en la clasificación"
+msgstr "Compete with your friends and climb the rankings"
+
+#: wp-amsawal-menu.php
+msgid "Voz activada. Pulse para silenciar."
+msgstr "Voice on. Press to mute."
+
+#: wp-amsawal-menu.php
+msgid "Voz silenciada. Pulse para activar."
+msgstr "Voice muted. Press to unmute."
+
+#: wp-amsawal-menu.php
+msgid "¡Azul, %s! 👋"
+msgstr "Hello, %s! 👋"
+
+#: wp-amsawal-courses.php
+msgid "Actual"
+msgstr "Current"
+
+#: wp-amsawal-courses.php
+msgid "Curso de %s"
+msgstr "%s course"
+
+#: wp-amsawal-courses.php
+msgid "Continuar aprendiendo"
+msgstr "Keep learning"
+
+#: wp-amsawal-courses.php
+msgid "Empezar curso"
+msgstr "Start course"
+
+#: wp-amsawal-courses.php
+msgid "Aún no hay cursos disponibles"
+msgstr "No courses available yet"
+
+#: wp-amsawal-courses.php
+msgid "Cuando un administrador publique una página con el metadato \"wp_amsawal_mb_course\" aparecerá aquí automáticamente."
+msgstr "When an administrator publishes a page with the \"wp_amsawal_mb_course\" metadata, it will appear here automatically."
+
+#: wp-amsawal-courses.php
+msgid "Si eres administrador, revisa <a href=\"/wp-admin/edit.php?post_type=page\">Páginas → Todas</a> y asigna el idioma del curso en la metabox."
+msgstr "If you are an administrator, check <a href=\"/wp-admin/edit.php?post_type=page\">Pages → All</a> and assign the course language in the metabox."
+
+#: wp-amsawal-admin-page.php
+msgid "📋 Registro de eventos"
+msgstr "📋 Event log"
+
+#: wp-amsawal-admin-page.php
+msgid "Exportar CSV"
+msgstr "Export CSV"
+
+#: wp-amsawal-admin-page.php
+msgid "Exportar JSON"
+msgstr "Export JSON"
+
+#: wp-amsawal-admin-page.php
+msgid "Vaciar registro"
+msgstr "Clear log"
+
+#: wp-amsawal-admin-page.php
+msgid "Permiso denegado"
+msgstr "Permission denied"
+
+#: wp-amsawal-admin-page.php
+msgid "Token de seguridad inválido"
+msgstr "Invalid security token"
+
+#: wp-amsawal-admin-page.php
+msgid "Formato no soportado"
+msgstr "Unsupported format"
+
+#: wp-amsawal-admin-page.php
+msgid "Registro vaciado."
+msgstr "Log cleared."
+
+#: wp-amsawal-admin-page.php
+msgid "No hay entradas en el registro."
+msgstr "There are no entries in the log."
+
+#: wp-amsawal-admin-page.php
+msgid "Fecha"
+msgstr "Date"
+
+#: wp-amsawal-admin-page.php
+msgid "Nivel"
+msgstr "Level"
+
+#: wp-amsawal-admin-page.php
+msgid "Usuario"
+msgstr "User"
+
+#: wp-amsawal-admin-page.php
+msgid "Mensaje"
+msgstr "Message"
+
+#: wp-amsawal-admin-page.php
+msgid "Contexto"
+msgstr "Context"
+
+#: wp-amsawal-admin-page.php
+msgid "Todos"
+msgstr "All"
+
+#: wp-amsawal-admin-page.php
+msgid "Errores"
+msgstr "Errors"
+
+#: wp-amsawal-admin-page.php
+msgid "Avisos"
+msgstr "Warnings"
+
+#: wp-amsawal-admin-page.php
+msgid "Info"
+msgstr "Info"
+
+#: wp-amsawal-admin-page.php
+msgid "Debug"
+msgstr "Debug"
+
+#: wp-amsawal-ai.php
+msgid "Te has quedado sin vidas ❤️"
+msgstr "You've run out of lives ❤️"
+
+#: wp-amsawal-ai.php
+msgid "Es normal. Repasar lo difícil es como se aprende. Elige qué quieres hacer:"
+msgstr "That's okay. Reviewing what you missed is how you learn. Choose what to do:"
+
+#: wp-amsawal-ai.php
+msgid "Repasar mis errores"
+msgstr "Review my mistakes"
+
+#: wp-amsawal-ai.php
+msgid "Volver al mapa"
+msgstr "Back to the map"
+
+#: wp-amsawal-ai.php
+msgid "Historial borrado. ¡Pregúntame lo que quieras!"
+msgstr "History cleared. Ask me anything!"
+
+#: wp-amsawal-ai.php
+msgid "Nueva conversación"
+msgstr "New conversation"

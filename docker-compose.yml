@@ -1,0 +1,57 @@
+# Docker Compose para entorno de pruebas WP Amsawal
+# Uso: docker compose up -d
+# WP Admin: http://localhost:8080/wp-admin
+# Plugin montado en: /var/www/html/wp-content/plugins/wp-amsawal
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+      # --- AI backend (OpenAI-compatible). Set AI_KEY via a local .env file. ---
+      # Supported endpoints (auto-detected): ModelScope, OpenAI, Pioneer, Groq, OpenRouter.
+      # The key is read via WP_AMSAWAL_OPENAI_KEY in wp-config.php.
+      AI_KEY: "${AI_KEY:-}"
+      AI_URL: "${AI_URL:-https://api-inference.modelscope.ai/v1/chat/completions}"
+      AI_MODEL: "${AI_MODEL:-Qwen/Qwen3-Next-80B-A3B-Instruct}"
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', false);
+        // OpenAI-compatible backend, configurable via AI_URL/AI_MODEL env vars.
+        define('WP_AMSAWAL_OPENAI_KEY', getenv('AI_KEY'));
+        define('WP_AMSAWAL_AI_URL', getenv('AI_URL'));
+        define('WP_AMSAWAL_AI_MODEL', getenv('AI_MODEL'));
+    volumes:
+      - wp_data:/var/www/html
+      - ./:/var/www/html/wp-content/plugins/wp-amsawal
+      - ./wp-content/themes/amsawal:/var/www/html/wp-content/themes/amsawal
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:
+  wp_data:

@@ -1,0 +1,396 @@
+/*-----------------------------------*\
+  #ACTIVITIES — Buttons and course components
+\*-----------------------------------*/
+
+.duo-test-btn {
+  display: block;
+  /* CRITICAL: Force gradient and 3D shadow */
+  background: linear-gradient(135deg, var(--amsawal-tifinagh), var(--amsawal-secondary)) !important;
+  color: rgba(var(--color-snow),1) !important;
+  border: none !important;
+  border-radius: var(--amsawal-radius);
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--amsawal-duration-fast) var(--amsawal-ease-out),
+              box-shadow var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  width: 100%;
+  box-sizing: border-box;
+  /* CRITICAL: Solid 3D shadow bottom */
+  box-shadow: 0 4px 0 var(--amsawal-tifinagh-dark) !important;
+}
+
+.duo-test-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 0 var(--amsawal-tifinagh-dark) !important;
+  color: rgba(var(--color-snow),1) !important;
+  text-decoration: none;
+}
+
+.duo-test-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 transparent !important;
+}
+
+.duo-info-btn {
+  /* CRITICAL: Force background with fallback */
+  background: var(--amsawal-primary-dark) !important;
+  color: rgba(var(--color-snow),1) !important;
+  border: none !important;
+  border-radius: var(--amsawal-radius-sm);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--amsawal-duration-fast);
+  width: 100%;
+}
+
+.duo-info-btn:hover {
+  background: var(--amsawal-primary-dark) !important;
+}
+
+/*-----------------------------------*\
+  #COURSE CARDS (selector de cursos)
+\*-----------------------------------*/
+
+.duo-courses-header {
+  text-align: center;
+  padding: 24px 0 16px;
+}
+
+.duo-courses-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--duo-text);
+  margin: 0 0 4px;
+}
+
+.duo-courses-header p {
+  font-size: 0.9rem;
+  color: var(--duo-text-light);
+  margin: 0;
+}
+
+/*-----------------------------------*\
+  #EMPTY STATE — When no data exists yet
+\*-----------------------------------*/
+
+.duo-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--amsawal-text-muted);
+}
+
+.duo-empty-state__art {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 24px;
+  background: var(--amsawal-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border: 3px dashed var(--amsawal-border);
+}
+
+.duo-empty-state h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+  margin: 0 0 8px;
+}
+
+.duo-empty-state p {
+  font-size: 0.95rem;
+  color: var(--amsawal-text-muted);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+/*-----------------------------------*\
+  #LOADING SKELETON — Shimmer placeholder
+\*-----------------------------------*/
+
+.duo-skeleton {
+  background: linear-gradient(90deg,
+    var(--amsawal-border) 0%,
+    var(--amsawal-bg) 50%,
+    var(--amsawal-border) 100%);
+  background-size: 200% 100%;
+  animation: duo-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--amsawal-radius-sm);
+}
+
+.duo-skeleton--text {
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.duo-skeleton--title {
+  height: 24px;
+  width: 60%;
+  margin-bottom: 16px;
+}
+
+.duo-skeleton--circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+
+.duo-skeleton--card {
+  height: 120px;
+  border-radius: var(--amsawal-radius-lg);
+}
+
+@keyframes duo-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.duo-course-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .duo-course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .duo-course-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.duo-course-card {
+  background: var(--amsawal-card);
+  border-radius: var(--amsawal-radius-lg);
+  box-shadow: var(--amsawal-shadow);
+  overflow: hidden;
+  transition: transform var(--amsawal-duration-normal) var(--amsawal-ease-out),
+              box-shadow var(--amsawal-duration-normal) var(--amsawal-ease-out);
+  position: relative;
+  border: 2px solid var(--amsawal-border);
+}
+
+.duo-course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--amsawal-shadow-lg);
+}
+
+.duo-course-card--active {
+  border: 2px solid var(--amsawal-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.15);
+}
+
+.duo-course-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--amsawal-primary-dark);
+  color: rgba(var(--color-snow),1);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(var(--color-primary), 0.3);
+}
+
+.duo-course-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--amsawal-bg);
+  position: relative;
+}
+
+.duo-course-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, rgba(var(--color-eclipse),0.15));
+  pointer-events: none;
+}
+
+.duo-course-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--amsawal-duration-slow) var(--amsawal-ease-out);
+}
+
+.duo-course-card:hover .duo-course-img img {
+  transform: scale(1.05);
+}
+
+.duo-course-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.duo-course-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+  margin: 0;
+}
+
+.duo-course-meta {
+  font-size: 0.8rem;
+  color: var(--amsawal-text-muted);
+  margin: 0;
+}
+
+.duo-course-btn {
+  /* CRITICAL: Use primary-dark for WCAG AA (4.87:1 with white text) */
+  background: var(--amsawal-primary-dark) !important;
+  color: rgba(var(--color-snow),1) !important;
+  border: none !important;
+  border-radius: var(--amsawal-radius-sm);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  width: 100%;
+  box-sizing: border-box;
+  /* CRITICAL: Solid 3D shadow bottom */
+  /* Hardcoded #005B7A replaced with CSS token */
+  box-shadow: 0 4px 0 rgb(var(--color-primary-dark)) !important;
+}
+
+.duo-course-btn:hover {
+  background: rgb(var(--color-primary-dark)) !important;
+  color: rgba(var(--color-snow),1) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 0 rgb(var(--color-primary-dark)) !important;
+}
+
+.duo-course-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 transparent !important;
+}
+
+.duo-course-video-btn {
+  /* CRITICAL: Force background and 3D shadow */
+  background: var(--amsawal-accent) !important;
+  color: rgba(var(--color-snow),1) !important;
+  border: none !important;
+  border-radius: var(--amsawal-radius-sm);
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  width: 100%;
+  box-sizing: border-box;
+  /* CRITICAL: Solid 3D shadow bottom */
+  box-shadow: 0 3px 0 var(--amsawal-primary-dark) !important;
+}
+
+.duo-course-video-btn:hover {
+  background: var(--amsawal-primary-dark) !important;
+  color: rgba(var(--color-snow),1) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 var(--amsawal-primary-dark) !important;
+}
+
+.duo-course-video-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 transparent !important;
+}
+
+.duo-course-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--amsawal-text);
+}
+
+.duo-course-mini img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: var(--amsawal-shadow);
+}
+/* F7-6: Focus-visible para course cards */
+.duo-course-card:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+.duo-test-btn:focus-visible,
+.duo-info-btn:focus-visible,
+.duo-course-btn:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+/* F7-9: High contrast mode */
+@media (prefers-contrast: more) {
+  .duo-course-card {
+    border-width: 3px;
+  }
+  
+  .duo-test-btn,
+  .duo-info-btn,
+  .duo-course-btn {
+    border-width: 3px;
+  }
+}
+
+/* F12-3: Ripple effect on buttons */
+.duo-test-btn,
+.duo-info-btn,
+.duo-course-btn,
+.duo-unit-guide-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.duo-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(var(--color-snow),0.6);
+  transform: scale(0);
+  animation: duo-ripple-animation 600ms linear;
+  pointer-events: none;
+}
+
+@keyframes duo-ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .duo-ripple {
+    animation: none;
+  }
+}

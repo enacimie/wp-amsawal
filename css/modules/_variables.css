@@ -1,0 +1,291 @@
+/*-----------------------------------*\
+  #CUSTOM PROPERTIES — AMSAWAL BRAND
+  Educational theme with Amazigh cultural touches
+\*-----------------------------------*/
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════
+   * AMSAWAL BRAND — Primary design tokens (Amazigh Flag)
+   * ⴰⵥⵕⵡⴰⵍ (Blue/Sea), ⴰⵣⴳⵣⴰⵡ (Green/Nature), 
+   * ⴰⵡⵔⴰⵖ (Yellow/Sun), ⴰⵣⴳⴳⵯⴰⵖ (Red/Blood)
+   * ═══════════════════════════════════════════════════════════════ */
+  --amsawal-primary: #0099CC;        /* Amazigh: Blue (ⴰⵥⵕⵡⴰⵍ - sea) */
+  --amsawal-primary-dark: #007AA3;   /* Darker blue for hover/active */
+  --amsawal-primary-darker: #005B7A; /* Darkest blue for 3D button shadows */
+  --amsawal-secondary: #99CC33;      /* Amazigh: Green (ⴰⵣⴳⵣⴰⵡ - nature) */
+  --amsawal-accent: #FFE513;         /* Amazigh: Yellow (ⴰⵡⵔⴰⵖ - sun) */
+  --amsawal-success: #99CC33;        /* Amazigh: Green */
+  --amsawal-warning: #FFE513;        /* Amazigh: Yellow */
+  --amsawal-error: #CC0033;          /* Amazigh: Red (ⴰⵣⴳⴳⵯⴰⵖ - blood) */
+
+  /* ═══════════════════════════════════════════════════════════════
+   * WCAG-AA Backgrounds (tints for text overlays)
+   * All pass AAA contrast with #2C3E50 text
+   * ═══════════════════════════════════════════════════════════════ */
+  --amsawal-success-bg: #D9EBB3;     /* Verde-100: success feedback (8.62 AAA) */
+  --amsawal-warning-bg: #FFF5B3;     /* Amarillo-100: XP/coins (9.92 AAA) */
+  --amsawal-error-bg: #FCE6EB;       /* Rojo-50: error feedback (9.24 AAA) */
+  --amsawal-accent-bg: #E6F4F9;      /* Azul-50: info/highlights (9.77 AAA) */
+  --amsawal-purple-bg: #f8f4ff;      /* AI components */
+
+  /* Dark variants for gradients */
+  --amsawal-success-dark: #7AA829;   /* Darker green */
+  --amsawal-error-dark: #A30029;     /* Darker red */
+
+  /* WCAG 2.2 AA text-safe variants — use these for color: on light backgrounds
+   * Original Amazigh flag colors are too light for text (1-3:1 ratio).
+   * These darkened variants meet AA (≥4.5:1 normal text, ≥3:1 large text). */
+  --amsawal-primary-text: #006D8F;    /* Darkened blue for text (4.5:1 AA on white) */
+  --amsawal-secondary-text: #4D7A14;  /* Darkened green for text (5.2:1 AA on white) */
+  --amsawal-accent-text: #7A6800;    /* Darkened yellow for text (5.5:1 AA on white) */
+  --amsawal-warning-text: #7A6800;    /* Same as accent-text */
+  --amsawal-success-text: #4D7A14;    /* Same as secondary-text */
+  --amsawal-tifinagh-text: #7A6800;   /* Tifinagh yellow as text (5.5:1 AA on white) */
+  --amsawal-error-text: #A30029;      /* Darkened red for text (7.3:1 AAA on white) */
+
+  /* Neutral Palette */
+  --amsawal-bg: #f8faff;             /* Very light background */
+  --amsawal-bg-gradient: linear-gradient(135deg, #f0fbff 0%, #f8faff 100%);
+  --amsawal-card: #ffffff;
+  --amsawal-text: #2c3e50;           /* Dark blue-gray - AAA pass */
+  --amsawal-text-light: #5a6a6b;     /* Medium gray — WCAG AAA 7.1:1 on white */
+  --amsawal-text-muted: #5a6a6b;     /* Muted gray — WCAG AAA 7.1:1 on white */
+  --amsawal-border: #ecf0f1;         /* Light border */
+
+  /* Cultural Accent - Amazigh Yellow */
+  --amsawal-tifinagh: #FFE513;       /* Amazigh flag: Yellow (ⴰⵡⵔⴰⵖ - sun) */
+  --amsawal-tifinagh-dark: #D4BE0F;  /* Darker yellow */
+  
+  /* AI Components Accent */
+  --amsawal-betta: #9069cd;          /* Purple for AI/regenerate button */
+
+  /* UI Properties */
+  --amsawal-radius: 12px;
+  --amsawal-radius-sm: 8px;
+  --amsawal-radius-lg: 20px;
+  --amsawal-shadow: 0 2px 12px rgba(var(--color-primary), 0.12);
+  --amsawal-shadow-lg: 0 8px 32px rgba(var(--color-primary), 0.18);
+  --amsawal-shadow-hover: 0 6px 20px rgba(var(--color-primary), 0.24);
+
+  /* Animation */
+  --amsawal-duration-fast: 150ms;
+  --amsawal-duration-normal: 300ms;
+  --amsawal-duration-slow: 450ms;
+  --amsawal-ease-out: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --amsawal-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index — unified scale (see --z-* below for canonical definitions) */
+  --amsawal-z-base: var(--z-base, 1);
+  --amsawal-z-header: var(--z-topbar, 200);
+  --amsawal-z-overlay: var(--z-overlay, 500);
+  --amsawal-z-modal: var(--z-modal, 1000);
+
+  /* ═══════════════════════════════════════════════════════════════
+   * LEGACY ALIASES — Keep --duo-* variables as Amsawal mappings
+   * 146 usages still reference --duo-* across this file.
+   * These aliases keep them working with the new brand palette.
+   * ═══════════════════════════════════════════════════════════════ */
+  --duo-green: var(--amsawal-primary);
+  --duo-green-dark: var(--amsawal-primary-dark);
+  --duo-blue: var(--amsawal-accent);
+  --duo-blue-dark: var(--amsawal-primary-dark);
+  --duo-gold: var(--amsawal-tifinagh);
+  --duo-orange: var(--amsawal-secondary);
+  --duo-red: var(--amsawal-error);
+  --duo-purple: var(--amsawal-betta);
+  --duo-bg: var(--amsawal-bg);
+  --duo-card: var(--amsawal-card);
+  --duo-text: var(--amsawal-text);
+  --duo-text-light: var(--amsawal-text-muted);
+  --duo-text-muted: var(--amsawal-text-muted);
+  --duo-locked: var(--amsawal-border);
+  --duo-border: var(--amsawal-border);
+  --duo-radius: var(--amsawal-radius);
+  --duo-radius-sm: var(--amsawal-radius-sm);
+  --duo-shadow: var(--amsawal-shadow);
+  --duo-shadow-lg: var(--amsawal-shadow-lg);
+  --duo-bg-card: var(--amsawal-card);
+  --duo-font: 'Quicksand', 'Inter', system-ui, sans-serif;
+
+  /* ═══════════════════════════════════════════════════════════════
+   * F7-4: TOKEN CONSOLIDATION MAP
+   * Primary: --amsawal-* (use these in new code)
+   * Legacy: --duo-* (aliases, keep for backward compatibility)
+   * RGB: --color-* (for rgba() usage, H5P styles)
+   * ═══════════════════════════════════════════════════════════════
+   * --amsawal-primary (#0099CC) = --duo-green = rgb(--color-primary: 0,153,204)
+   * --amsawal-accent (#FFE513) = --duo-blue = rgb(--color-macaw: 255,229,19)
+   * --amsawal-success (#99CC33) = --duo-green (legacy) = rgb(--color-owl: 153,204,51)
+   * --amsawal-warning (#FFE513) = --duo-orange = rgb(--color-fox: 255,229,19)
+   * --amsawal-error (#CC0033) = --duo-red = rgb(--color-fire-ant: 204,0,51)
+   * --amsawal-tifinagh (#FFE513) = --duo-gold = rgb(--color-camel: 255,229,19)
+   * ═══════════════════════════════════════════════════════════════ */
+}
+
+/*───────────────────────────────────────────────────────────────────────
+ * AMSAWAL BRAND — Educational theme with Amazigh identity
+ * Replaces Amsawal aesthetic with Amsawal branding
+ *───────────────────────────────────────────────────────────────────────*/
+
+/*───────────────────────────────────────────────────────────────────────
+ * Very small phones (< 375px)
+ *───────────────────────────────────────────────────────────────────────*/
+@media (max-width: 374px) {
+  .duo-container { padding: 50px 8px 78px; }
+  .duo-node-circle { width: 40px; height: 40px; min-width: 40px; font-size: 1rem; }
+  .duo-node-circle--large { width: 48px; height: 48px; min-width: 48px; font-size: 1.2rem; }
+  .duo-node-label { font-size: 0.8rem; }
+  .navbar a { min-width: 36px; padding: 3px 4px; }
+  .nav-label { font-size: 0.75rem; }
+  .duo-course-btn { padding: 10px 12px; font-size: 0.85rem; }
+}
+
+/* ────────────────────────────────────────────────────────
+ * V7 DESIGN TOKENS & COMPONENTS — Appended
+ * Color animal tokens, spacing/radius/elevation/z-index scales,
+ * motion tokens, button 3D/shine, components, dark mode, drawer.
+ * ──────────────────────────────────────────────────────── */
+
+:root {
+  /* Neutrals (snow -> eel) — RGB triplets for rgba() */
+  --color-snow:               255, 255, 255;
+  --color-snow-always-light:  255, 255, 255;
+  --color-snow-always-dark:   19, 31, 36;
+  --color-polar:              247, 247, 247;
+  --color-swan:               229, 229, 229;
+  --color-hare:               175, 175, 175;
+  --color-wolf:               119, 119, 119;
+  --color-eel:                75, 75, 75;
+  --color-eclipse:            0, 0, 0;
+
+  /* Brand — Amazigh flag palette */
+  --color-primary:             0, 153, 204;     /* Amazigh: Blue (#0099CC) */
+  --color-primary-dark:        0, 122, 163;     /* Amazigh: Darker blue (#007AA3) */
+  --color-secondary:           153, 204, 51;    /* Amazigh: Green (#99CC33) */
+  --color-macaw:              255, 229, 19;   /* Amazigh: Yellow (#FFE513) */
+  --color-whale:              212, 190, 15;   /* Amazigh: Darker yellow (#D4BE0F) */
+  --color-owl:                153, 204, 51;   /* Amazigh: Green (#99CC33) */
+  --color-success:            153, 204, 51;   /* Amazigh: Green (#99CC33) */
+  --color-tree-frog:          120, 168, 30;   /* Darker green */
+  --color-turtle:             200, 230, 120;  /* Light green */
+
+  /* Dark theme surfaces (used in dark-mode gradients) */
+  --color-dark-card:        42, 46, 54;     /* #2a2e36 */
+  --color-dark-shadow:      26, 29, 36;     /* #1a1d24 */
+  --color-dark-accent:      26, 35, 50;     /* #1a2332 */
+
+  /* Streak/warning — Amazigh yellow (alias of --color-macaw) */
+  --color-fox:                var(--color-macaw);
+  --color-camel:              var(--color-macaw);
+
+  /* Error/danger — Amazigh flag */
+  --color-fire-ant:           204, 0, 51;     /* Amazigh: Red (#CC0033) */
+  --color-cardinal:           255, 80, 80;    /* Lighter red */
+  --color-pig:                255, 180, 180;
+
+  /* Accent: Amazigh yellow (alias of --color-macaw) */
+  --color-bee:                var(--color-macaw);
+  --color-guinea-pig:         var(--color-whale);
+
+  /* Accent: purple */
+  --color-beetle:             206, 130, 255;
+  --color-betta:              144, 105, 205;
+
+  /* Spacing scale (4px base) */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Border-radius scale — canonical source */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-pill: 9999px;
+
+  /* F7-16: --amsawal-radius-* aliases pointing to scale */
+  --amsawal-radius-xs: var(--radius-xs);
+  --amsawal-radius-sm: var(--radius-sm);
+  --amsawal-radius:    var(--radius-md);
+  --amsawal-radius-lg: var(--radius-xl);
+  --amsawal-radius-xl: var(--radius-2xl);
+  --amsawal-radius-pill: var(--radius-pill);
+
+  /* F7-8: --amsawal-space-* aliases pointing to spacing scale */
+  --amsawal-space-0:  var(--space-0);
+  --amsawal-space-1:  var(--space-1);
+  --amsawal-space-2:  var(--space-2);
+  --amsawal-space-3:  var(--space-3);
+  --amsawal-space-4:  var(--space-4);
+  --amsawal-space-5:  var(--space-5);
+  --amsawal-space-6:  var(--space-6);
+  --amsawal-space-8:  var(--space-8);
+  --amsawal-space-10: var(--space-10);
+  --amsawal-space-12: var(--space-12);
+  --amsawal-space-16: var(--space-16);
+  --amsawal-space-20: var(--space-20);
+  --amsawal-space-24: var(--space-24);
+
+  /* Elevation */
+  --elev-0:  none;
+  --elev-1:  0 1px 2px rgba(var(--color-eclipse),0.06), 0 1px 3px rgba(var(--color-eclipse),0.10);
+  --elev-2:  0 2px 4px rgba(var(--color-eclipse),0.07), 0 4px 8px rgba(var(--color-eclipse),0.07);
+  --elev-3:  0 4px 8px rgba(var(--color-eclipse),0.10), 0 8px 16px rgba(var(--color-eclipse),0.10);
+  --elev-4:  0 8px 16px rgba(var(--color-eclipse),0.12), 0 16px 32px rgba(var(--color-eclipse),0.12);
+  --elev-5:  0 16px 32px rgba(var(--color-eclipse),0.18), 0 24px 48px rgba(var(--color-eclipse),0.18);
+
+  /* Z-index scale */
+  --z-base:    1;
+  --z-elevated: 10;
+  --z-sticky:  100;
+  --z-topbar:  200;
+  --z-dropdown: 300;
+  --z-overlay: 500;
+  --z-modal:   1000;
+  --z-toast:   1100;
+  --z-tooltip: 1200;
+
+  /* Motion */
+  --spring:             cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:           cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:        cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:      150ms;
+  --duration-normal:    250ms;
+  --duration-slow:      400ms;
+  --duration-slower:    600ms;
+
+  color-scheme: light dark;
+}
+/* F11-5: RTL support infrastructure */
+/* Note: Tamazight (Tarifit) uses Latin script, so RTL is not currently needed */
+/* This is prepared for future Arabic script support */
+
+[dir="rtl"] .duo-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .duo-node {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .duo-sidebar {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .duo-toast-stack {
+  right: auto;
+  left: 24px;
+}

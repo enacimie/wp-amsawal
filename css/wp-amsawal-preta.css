@@ -1,0 +1,86 @@
+/**
+ * Estilos legacy para contenido H5P y GamiPress
+ * Reescrito con tokens de diseño modernos
+ */
+
+.h1-lesson {
+	color: var(--color-snow);
+	margin-bottom: var(--space-3);
+	font-weight: 700;
+	font-size: 2rem;
+	width: 100%;
+}
+
+.h1-lesson > .fas,
+.h1-lesson > .fa {
+	float: right;
+	background-color: var(--color-snow);
+	padding: var(--space-2);
+	color: var(--color-eel);
+	border-radius: var(--radius-pill);
+}
+
+.lessoncontent {
+	font-size: 1.125rem;
+	color: var(--color-snow);
+	text-align: justify;
+}
+
+.title-box {
+	background-color: rgba(var(--color-eclipse), 0.78);
+	width: 100%;
+	height: 100px;
+	color: var(--color-snow);
+	position: relative;
+	top: -100px;
+	font-weight: 700;
+	font-size: 0.875rem;
+	text-align: center;
+	padding: var(--space-3);
+}
+
+main {
+	background-color: var(--color-snow);
+	font-size: 1rem;
+	padding-block: var(--space-12);
+	overflow-y: auto;
+}
+
+body:not(.amsawal-immersive) footer {
+	display: none !important;
+}
+
+.h5p-badge {
+	position: absolute;
+	top: 0;
+	padding: var(--space-1);
+	border-radius: var(--radius-md) 0 var(--radius-md) 0;
+	min-width: 50px;
+	text-align: center;
+	background-color: var(--color-owl);
+	color: var(--color-snow);
+	font-weight: 600;
+}
+
+.pjs-slider-container a,
+.pjs-slider-container a:hover {
+	color: var(--color-snow);
+	text-decoration: none;
+}
+
+/* GamiPress */
+.norank {
+	pointer-events: none;
+	opacity: 0.1;
+	filter: grayscale(100%);
+}
+
+.norank_text {
+	position: relative;
+	top: 110px;
+	text-align: center;
+	font-size: 2.5rem;
+	color: var(--color-secondary);
+	text-shadow: 1px 1px 1px rgba(var(--color-eclipse), 0.8);
+	font-weight: 700;
+}

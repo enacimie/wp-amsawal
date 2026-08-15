@@ -1,0 +1,498 @@
+/* Amsawal Unified Page Layout
+ * Shared styles for gamification pages:
+ * - /logros/ (achievements wall)
+ * - /tienda/ (shop)
+ * - /liderazgos/ (leaderboards)
+ * - /mis-resultados/ (my stats)
+ * - /i/{username}/ (profile)
+ *
+ * Design system: card-based, rounded corners, consistent header.
+ */
+
+/* === Page container === */
+.duo-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.duo-achievements-wall,
+.duo-shop {
+  /* Inherit from .duo-page via the shortcodes */
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Page header === */
+.duo-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, var(--duo-card, #fff) 0%, color-mix(in srgb, var(--duo-primary, #0099CC) 6%, var(--duo-card, #fff)) 100%);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.duo-page-header-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.duo-page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  margin: 0 0 6px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.duo-page-subtitle {
+  font-size: 15px;
+  color: var(--duo-text-light, #6b7280);
+  margin: 0;
+  line-height: 1.4;
+  max-width: 600px;
+}
+
+.duo-page-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.duo-page-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-width: 100px;
+}
+
+.duo-page-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.duo-page-stat--coins {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-color: #f59e0b;
+}
+
+.duo-page-stat-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.duo-page-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  line-height: 1;
+}
+
+.duo-page-stat--coins .duo-page-stat-value {
+  color: #d97706;
+}
+
+.duo-page-stat-label {
+  font-size: 11px;
+  color: var(--duo-text-light, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* === Section header (used in all pages) === */
+.duo-section-header {
+  margin: 32px 0 16px;
+}
+
+.duo-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  margin: 0 0 4px;
+}
+
+.duo-section-desc {
+  font-size: 14px;
+  color: var(--duo-text-light, #6b7280);
+  margin: 0;
+}
+
+/* === Back link === */
+.duo-back-link {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 16px;
+  color: var(--duo-text-light, #6b7280);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.duo-back-link:hover {
+  background: var(--duo-border, #e5e5e5);
+  color: var(--duo-text, #1a1a1a);
+}
+
+/* === Standard card (used by all pages) === */
+.duo-card {
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.duo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* === Progress card variant (home — single line) === */
+.duo-card--progress {
+  margin-bottom: 16px;
+  padding: 16px 20px;
+}
+
+.duo-card--progress:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.duo-progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.duo-progress-label {
+  font-size: 16px;
+  color: var(--duo-text, #1a1a1a);
+  font-weight: 600;
+}
+
+.duo-card--progress .duo-progress-bar-wrapper {
+  margin-bottom: 0;
+}
+
+/* === Challenges grid (home — streak + XP daily) === */
+.duo-challenges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.duo-challenges:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.duo-challenge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  text-decoration: none;
+  color: inherit;
+  border-right: 1px solid var(--duo-border, #e5e5e5);
+  transition: background 0.15s;
+}
+
+.duo-challenge:last-child {
+  border-right: none;
+}
+
+.duo-challenge:hover {
+  background: var(--duo-bg, #f9fafb);
+}
+
+.duo-challenge-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.duo-challenge-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.duo-challenge-label {
+  font-size: 11px;
+  color: var(--duo-text-light, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.duo-challenge-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  line-height: 1.2;
+}
+
+.duo-challenge-value-goal {
+  font-size: 12px;
+  color: var(--duo-text-light, #6b7280);
+  font-weight: 500;
+}
+
+/* Streak-themed challenge */
+.duo-challenge--streak .duo-challenge-icon {
+  color: #f59e0b;
+}
+
+/* XP-themed challenge */
+.duo-challenge--xp .duo-challenge-icon {
+  color: var(--duo-primary, #0099CC);
+}
+
+@media (max-width: 600px) {
+  .duo-challenges {
+    grid-template-columns: 1fr;
+  }
+
+  .duo-challenge {
+    border-right: none;
+    border-bottom: 1px solid var(--duo-border, #e5e5e5);
+  }
+
+  .duo-challenge:last-child {
+    border-bottom: none;
+  }
+}
+
+/* === Grid (used by all pages) === */
+.duo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.duo-grid-3 {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.duo-grid-4 {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* === Stat card (profile + results) === */
+.duo-stat-card {
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.duo-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.duo-stat-card .duo-stat-icon {
+  font-size: 36px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.duo-stat-card .duo-stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.duo-stat-card .duo-stat-label {
+  display: block;
+  font-size: 12px;
+  color: var(--duo-text-light, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* === Tabs (for leaderboards) === */
+.duo-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--duo-border, #e5e5e5);
+  flex-wrap: wrap;
+}
+
+.duo-tab {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  color: var(--duo-text-light, #6b7280);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.duo-tab:hover {
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-tab.is-active {
+  color: var(--duo-primary, #0099CC);
+  border-bottom-color: var(--duo-primary, #0099CC);
+}
+
+.duo-tab-content {
+  display: none;
+}
+
+.duo-tab-content.is-active {
+  display: block;
+}
+
+/* === Empty state === */
+.duo-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--duo-text-light, #6b7280);
+  background: var(--duo-card, #fff);
+  border: 1px dashed var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+}
+
+.duo-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.duo-empty-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--duo-text, #1a1a1a);
+  margin: 0 0 8px;
+}
+
+.duo-empty-desc {
+  font-size: 14px;
+  margin: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Buttons (shared) === */
+.duo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.duo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.duo-btn--primary {
+  background: linear-gradient(135deg, var(--duo-primary, #0099CC), color-mix(in srgb, var(--duo-primary, #0099CC) 70%, white));
+  color: #fff;
+}
+
+.duo-btn--primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--duo-primary, #0099CC) 35%, transparent);
+}
+
+.duo-btn--success {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #fff;
+}
+
+.duo-btn--warning {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+}
+
+.duo-btn--ghost {
+  background: transparent;
+  color: var(--duo-text, #1a1a1a);
+  border: 1px solid var(--duo-border, #e5e5e5);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .duo-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .duo-page-title {
+    font-size: 24px;
+  }
+
+  .duo-page-stats {
+    width: 100%;
+  }
+
+  .duo-page-stat {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .duo-grid,
+  .duo-grid-3,
+  .duo-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === High contrast support === */
+@media (prefers-contrast: more) {
+  .duo-page-stat,
+  .duo-card,
+  .duo-stat-card {
+    border-width: 2px;
+  }
+}

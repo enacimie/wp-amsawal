@@ -1,0 +1,87 @@
+/*-----------------------------------*\
+  #DARK MODE — Token overrides for main document
+  Activated by: OS preference (@media prefers-color-scheme: dark)
+  or manual toggle: [data-theme="dark"] on <html> or <body>
+\*-----------------------------------*/
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --amsawal-bg: #1a1d24;
+    --amsawal-bg-gradient: linear-gradient(135deg, #15181e 0%, #1a1d24 100%);
+    --amsawal-card: #2a2e36;
+    --amsawal-text: #e8eaed;
+    --amsawal-text-light: #a0a6ad;
+    --amsawal-text-muted: #8a9098;
+    --amsawal-border: #3a3f47;
+
+    --amsawal-success-bg: #2d3b1e;
+    --amsawal-warning-bg: #3d3a1e;
+    --amsawal-error-bg: #3d1e25;
+    --amsawal-accent-bg: #1e2d3d;
+    --amsawal-purple-bg: #2a1e3d;
+  }
+}
+
+[data-theme="dark"] {
+  --amsawal-bg: #1a1d24;
+  --amsawal-bg-gradient: linear-gradient(135deg, #15181e 0%, #1a1d24 100%);
+  --amsawal-card: #2a2e36;
+  --amsawal-text: #e8eaed;
+  --amsawal-text-light: #a0a6ad;
+  --amsawal-text-muted: #8a9098;
+  --amsawal-border: #3a3f47;
+
+  --amsawal-success-bg: #2d3b1e;
+  --amsawal-warning-bg: #3d3a1e;
+  --amsawal-error-bg: #3d1e25;
+  --amsawal-accent-bg: #1e2d3d;
+  --amsawal-purple-bg: #2a1e3d;
+}
+
+/* Dark mode component overrides */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .h5p-card,
+  [data-theme="dark"] .h5p-card {
+    background: var(--amsawal-card);
+    color: var(--amsawal-text);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  :root:not([data-theme="light"]) .duo-quest-card,
+  [data-theme="dark"] .duo-quest-card {
+    background: var(--amsawal-card);
+    border-color: var(--amsawal-border);
+  }
+
+  :root:not([data-theme="light"]) .duo-feedback-bar,
+  [data-theme="dark"] .duo-feedback-bar {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+
+  :root:not([data-theme="light"]) .duo-leader-card,
+  [data-theme="dark"] .duo-leader-card {
+    background: var(--amsawal-card);
+    border-color: var(--amsawal-border);
+  }
+
+  :root:not([data-theme="light"]) .duo-node-circle,
+  [data-theme="dark"] .duo-node-circle {
+    border-color: var(--amsawal-border);
+  }
+}
+
+/* Essay feedback bar active state (was missing — caused invisible bar) */
+.duo-feedback-bar.active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* WCAG fix: Yellow text on light backgrounds fails AA (1.07:1).
+   Use dark variant for text contexts. */
+.duo-badge--info,
+.duo-badge--gold {
+  color: var(--amsawal-tifinagh-dark, #D4BE0F);
+}
+.duo-badge--warning {
+  color: var(--amsawal-tifinagh-dark, #D4BE0F);
+}

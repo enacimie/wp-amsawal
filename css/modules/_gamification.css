@@ -1,0 +1,658 @@
+/*-----------------------------------*\
+  #GAMIFICATION — XP, Levels, Streaks, Lives
+\*-----------------------------------*/
+
+.duo-gamification-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 16px 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: var(--amsawal-shadow);
+}
+
+/* Level Badge */
+.duo-gamification-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.duo-level-badge {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--amsawal-primary), var(--amsawal-primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(var(--color-primary), 0.3);
+  border: 3px solid var(--amsawal-tifinagh);
+}
+
+.duo-level-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 4px;
+}
+
+.duo-level-num {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: rgba(var(--color-snow),1);
+}
+
+.duo-level-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+/* XP Progress Bar */
+.duo-gamification-progress {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.duo-xp-bar {
+  height: 16px;
+  background: var(--amsawal-border);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.duo-xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amsawal-warning), var(--amsawal-tifinagh), var(--amsawal-warning));
+  background-size: 200% 100%;
+  border-radius: 8px;
+  transition: width 800ms var(--amsawal-ease-out);
+  animation: duo-xp-shimmer 2s linear infinite;
+}
+
+@keyframes duo-xp-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-xp-bar-fill {
+    animation: none;
+  }
+}
+
+.duo-xp-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.duo-xp-current {
+  font-weight: 700;
+  color: var(--amsawal-primary);
+}
+
+.duo-xp-needed {
+  color: var(--amsawal-text-muted);
+}
+
+/* Stats (Streak & Lives) */
+.duo-gamification-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.duo-gamification-streak,
+.duo-gamification-lives {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--amsawal-bg);
+  border-radius: var(--amsawal-radius-sm);
+  border: 2px solid var(--amsawal-border);
+}
+
+.duo-streak-icon,
+.duo-lives-icon {
+  font-size: 1.3rem;
+}
+
+.duo-streak-count,
+.duo-lives-count {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+/*-----------------------------------*\
+  #ACHIEVEMENTS SECTION — Collectible cases (GamiPress)
+\*-----------------------------------*/
+
+.duo-achievements-section {
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+.duo-achievements-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.duo-achievements-header h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--amsawal-text);
+  margin: 0;
+}
+
+.duo-achievements-view-all {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--amsawal-accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.duo-achievements-view-all:hover {
+  text-decoration: underline;
+}
+
+.duo-achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.duo-achievement-case {
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 16px;
+  position: relative;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  cursor: pointer;
+}
+
+.duo-achievement-case:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--amsawal-shadow-lg);
+  border-color: var(--amsawal-tifinagh);
+}
+
+.duo-achievement-case.is-locked {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+.duo-achievement-case.is-earned {
+  border-color: var(--amsawal-tifinagh);
+  box-shadow: 0 0 0 3px rgba(var(--color-camel), 0.15);
+}
+
+.duo-achievement-image {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amsawal-bg);
+  border-radius: var(--amsawal-radius-sm);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.duo-achievement-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.duo-achievement-placeholder {
+  font-size: 3rem;
+}
+
+.duo-achievement-info {
+  text-align: center;
+}
+
+.duo-achievement-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+  margin: 0 0 4px;
+}
+
+.duo-achievement-desc {
+  font-size: 0.875rem;
+  color: var(--amsawal-text-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.duo-achievement-checkmark,
+.duo-achievement-lock {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 1.2rem;
+}
+
+/*-----------------------------------*\
+  #STREAK PANEL — Streak Society style
+\*-----------------------------------*/
+
+.duo-streak-panel {
+  /* Use primary (blue) instead of secondary (green) for better contrast with white text */
+  background: linear-gradient(135deg, var(--amsawal-primary) 0%, var(--amsawal-tifinagh-dark) 100%);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 24px;
+  color: rgba(var(--color-snow),1);
+  text-shadow: 0 1px 3px rgba(var(--color-eclipse),0.3);
+  box-shadow: 0 8px 24px rgba(var(--color-primary), 0.3);
+}
+
+.duo-streak-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.duo-streak-panel-header h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.duo-streak-total {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: rgba(var(--color-snow),0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.duo-streak-progress-container {
+  margin-bottom: 20px;
+}
+
+.duo-streak-progress-bar {
+  height: 12px;
+  background: rgba(var(--color-snow),0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.duo-streak-progress-fill {
+  height: 100%;
+  background: rgba(var(--color-snow),1);
+  border-radius: 6px;
+  transition: width 800ms var(--amsawal-ease-out);
+}
+
+.duo-streak-milestone-text {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0;
+  text-align: center;
+}
+
+.duo-streak-milestones {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.duo-streak-milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(var(--color-snow),0.1);
+  border-radius: 8px;
+  flex: 1;
+}
+
+.duo-streak-milestone.is-unlocked {
+  background: rgba(var(--color-snow),0.25);
+}
+
+.duo-milestone-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.duo-milestone-icon {
+  font-size: 1rem;
+}
+
+.duo-streak-freeze {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(var(--color-snow),0.1);
+  padding: 16px;
+  border-radius: var(--amsawal-radius-sm);
+}
+
+.duo-freeze-icon {
+  font-size: 2.5rem;
+}
+
+.duo-freeze-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.duo-freeze-info p {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.duo-freeze-btn {
+  margin-left: auto;
+  background: rgba(var(--color-snow),0.2);
+  color: rgba(var(--color-snow),1);
+  border: 2px solid rgba(var(--color-snow),0.4);
+  padding: 10px 16px;
+  border-radius: var(--amsawal-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
+/*-----------------------------------*\
+  #LEVEL UP MODAL — Celebration overlay
+\*-----------------------------------*/
+
+.duo-level-up-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--color-eclipse),0.7);
+  backdrop-filter: blur(8px);
+  z-index: var(--amsawal-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: duo-fade-in 300ms var(--amsawal-ease-out);
+}
+
+.duo-level-up-card {
+  background: var(--amsawal-card);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 40px;
+  text-align: center;
+  max-width: 450px;
+  animation: duo-scale-up 400ms var(--amsawal-ease-out);
+}
+
+@keyframes duo-scale-up {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.duo-level-up-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: duo-bounce 600ms var(--amsawal-ease-out) infinite;
+}
+
+@keyframes duo-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+.duo-level-up-card h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--amsawal-primary);
+  margin: 0 0 8px;
+}
+
+.duo-level-up-card p {
+  font-size: 1rem;
+  color: var(--amsawal-text-muted);
+  margin: 0 0 24px;
+}
+
+.duo-level-up-rewards {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.duo-reward-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--amsawal-bg);
+  padding: 12px 20px;
+  border-radius: var(--amsawal-radius-sm);
+  border: 2px solid var(--amsawal-tifinagh);
+}
+
+.duo-reward-icon {
+  font-size: 1.5rem;
+}
+
+.duo-reward-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-level-up-continue {
+  background: var(--amsawal-primary-dark);
+  color: rgba(var(--color-snow),1);
+  border: none;
+  border-radius: var(--amsawal-radius-sm);
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 0 var(--amsawal-primary-darker);
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+.duo-level-up-continue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--amsawal-primary-dark);
+}
+
+.duo-level-up-continue:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 transparent;
+}
+
+/*-----------------------------------*\
+  #CELEBRATION ANIMATIONS — Confetti, fireworks, level up effects
+\*-----------------------------------*/
+
+.duo-confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Screen flash on big celebrations */
+@keyframes duo-screen-flash {
+  0% { background: rgba(255, 212, 0, 0.3); }
+  100% { background: transparent; }
+}
+
+.duo-celebration-flash {
+  animation: duo-screen-flash 600ms var(--amsawal-ease-out);
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+
+/* Success pulse animation */
+@keyframes duo-success-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--color-owl), 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(var(--color-owl), 0);
+  }
+}
+
+.duo-success-pulse {
+  animation: duo-success-pulse 600ms var(--amsawal-ease-out);
+}
+
+/* Achievement unlock glow */
+@keyframes duo-achievement-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px var(--amsawal-tifinagh));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--amsawal-tifinagh))
+            drop-shadow(0 0 30px var(--amsawal-warning));
+  }
+}
+
+.duo-achievement-unlock {
+  animation: duo-achievement-glow 1s var(--amsawal-ease-in-out) infinite;
+}
+
+/* Streak celebration — uses brand tokens for dark mode compatibility */
+@keyframes duo-streak-fire {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px var(--amsawal-secondary));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px var(--amsawal-secondary))
+            drop-shadow(0 0 25px var(--amsawal-warning));
+    transform: scale(1.1);
+  }
+}
+
+.duo-streak-celebration {
+  animation: duo-streak-fire 800ms var(--amsawal-ease-in-out) infinite;
+}
+
+/* XP bar fill animation */
+@keyframes duo-xp-fill {
+  0% {
+    width: 0;
+    filter: brightness(1.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.duo-xp-bar-fill {
+  animation: duo-xp-fill 800ms var(--amsawal-ease-out);
+}
+
+/* Particle container for JS animations */
+.duo-particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+.duo-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: duo-particle-fall linear forwards;
+}
+
+@keyframes duo-particle-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+/* Error shake animation */
+@keyframes duo-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+  75% { transform: translateX(-8px); }
+}
+
+.duo-shake {
+  animation: duo-shake 400ms var(--amsawal-ease-out);
+}
+/* F7-6: Focus-visible para quest cards y achievements */
+.duo-quest-card:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+.duo-achievement-case:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+.duo-leader-toggle:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+.duo-tab:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: -3px;
+}
+
+/* F7-9: High contrast mode */
+@media (prefers-contrast: more) {
+  .duo-quest-card,
+  .duo-achievement-case,
+  .duo-leader-card {
+    border-width: 3px;
+  }
+  
+  .duo-level-badge {
+    border-width: 4px;
+  }
+}

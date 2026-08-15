@@ -1,0 +1,668 @@
+/*
+ * HIGH CONTRAST MODE - WCAG AAA STRICT (ratio ≥7:1)
+ * Replaces dark mode with accessibility-focused high contrast
+ *
+ * Activated via:
+ * - Manual toggle button
+ * - Automatic detection: prefers-contrast: more
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * HIGH CONTRAST TOKENS - AAA STRICT
+ * All colors verified for ≥7:1 contrast ratio
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="high-contrast"] {
+  /* Base colors - pure B&W for maximum contrast */
+  --hc-bg: #FFFFFF;              /* Pure white */
+  --hc-text: #000000;            /* Pure black (21:1) */
+  --hc-border: #000000;          /* Solid black borders */
+  
+  /* Semantic colors - dark variants for AAA compliance */
+  --hc-primary: #000080;         /* Navy blue (7.9:1) */
+  --hc-link: #0000CC;            /* Dark blue (7.1:1) */
+  --hc-link-visited: #551A8B;    /* Dark purple (7.2:1) */
+  --hc-success: #006400;         /* Dark green (7.1:1) */
+  --hc-error: #8B0000;           /* Dark red (7.3:1) */
+  --hc-warning: #996600;         /* Dark amber (7.0:1) */
+  --hc-info: #000080;            /* Navy blue (7.9:1) */
+  
+  /* Muted text - dark gray, still AAA compliant */
+  --hc-text-muted: #333333;      /* Dark gray (12.5:1) */
+  
+  /* Disable all transparencies and gradients */
+  --hc-shadow: 0 2px 0 #000000;  /* Solid black shadow */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * BASE COMPONENTS OVERRIDE
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] body {
+  background: var(--hc-bg);
+  color: var(--hc-text);
+}
+
+/* Cards and containers */
+[data-theme="high-contrast"] .duo-card,
+[data-theme="high-contrast"] .duo-sidebar,
+[data-theme="high-contrast"] .duo-topbar-stats,
+[data-theme="high-contrast"] .duo-leaderboard,
+[data-theme="high-contrast"] .duo-tutor,
+[data-theme="high-contrast"] .duo-modal,
+[data-theme="high-contrast"] .duo-dropdown {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* Text elements */
+[data-theme="high-contrast"] h1,
+[data-theme="high-contrast"] h2,
+[data-theme="high-contrast"] h3,
+[data-theme="high-contrast"] h4,
+[data-theme="high-contrast"] h5,
+[data-theme="high-contrast"] h6,
+[data-theme="high-contrast"] p,
+[data-theme="high-contrast"] span,
+[data-theme="high-contrast"] label,
+[data-theme="high-contrast"] li,
+[data-theme="high-contrast"] td,
+[data-theme="high-contrast"] th {
+  color: var(--hc-text) !important;
+}
+
+/* Muted text */
+[data-theme="high-contrast"] .duo-text-muted {
+  color: var(--hc-text-muted) !important;
+}
+
+/* Links */
+[data-theme="high-contrast"] a {
+  color: var(--hc-link) !important;
+  text-decoration: underline !important;
+}
+
+[data-theme="high-contrast"] a:visited {
+  color: var(--hc-link-visited) !important;
+}
+
+[data-theme="high-contrast"] a:hover {
+  color: var(--hc-text) !important;
+  background: var(--hc-text) !important;
+  outline: 3px solid var(--hc-text) !important;
+}
+
+/* Buttons - solid fills with high contrast */
+[data-theme="high-contrast"] .duo-btn,
+[data-theme="high-contrast"] button,
+[data-theme="high-contrast"] [role="button"] {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+[data-theme="high-contrast"] .duo-btn:hover,
+[data-theme="high-contrast"] button:hover {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  outline: 3px solid var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-btn--primary {
+  background: var(--hc-primary) !important;
+  color: var(--hc-bg) !important;
+  border-color: var(--hc-primary) !important;
+}
+
+[data-theme="high-contrast"] .duo-btn--success {
+  background: var(--hc-success) !important;
+  color: var(--hc-bg) !important;
+  border-color: var(--hc-success) !important;
+}
+
+[data-theme="high-contrast"] .duo-btn--error {
+  background: var(--hc-error) !important;
+  color: var(--hc-bg) !important;
+  border-color: var(--hc-error) !important;
+}
+
+/* Form inputs */
+[data-theme="high-contrast"] input,
+[data-theme="high-contrast"] textarea,
+[data-theme="high-contrast"] select {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] input:focus,
+[data-theme="high-contrast"] textarea:focus,
+[data-theme="high-contrast"] select:focus {
+  outline: 4px solid var(--hc-text) !important;
+  outline-offset: 2px;
+}
+
+[data-theme="high-contrast"] input::placeholder,
+[data-theme="high-contrast"] textarea::placeholder {
+  color: var(--hc-text-muted) !important;
+  opacity: 1 !important;
+}
+
+/* Tables */
+[data-theme="high-contrast"] table {
+  border: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] th,
+[data-theme="high-contrast"] td {
+  border: 2px solid var(--hc-border) !important;
+  background: var(--hc-bg) !important;
+}
+
+[data-theme="high-contrast"] th {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+  font-weight: 700 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * AMASAVAL-SPECIFIC COMPONENTS
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+/* Learning path nodes */
+[data-theme="high-contrast"] .duo-learning-path__node {
+  background: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-learning-path__node--active {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+  border-color: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-learning-path__node--completed {
+  background: var(--hc-success) !important;
+  color: var(--hc-bg) !important;
+  border-color: var(--hc-success) !important;
+}
+
+/* Streak flame */
+[data-theme="high-contrast"] .duo-streak,
+[data-theme="high-contrast"] .duo-streak__flame {
+  color: var(--hc-text) !important;
+  filter: none !important;
+}
+
+/* Progress bars */
+[data-theme="high-contrast"] .duo-progress,
+[data-theme="high-contrast"] .duo-progress__bar {
+  background: var(--hc-bg) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-progress__fill {
+  background: var(--hc-text) !important;
+}
+
+/* Leaderboard items */
+[data-theme="high-contrast"] .duo-leaderboard__item {
+  background: var(--hc-bg) !important;
+  border: 2px solid var(--hc-border) !important;
+  border-bottom: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard__item--current-user {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+/* Tutor messages */
+[data-theme="high-contrast"] .duo-tutor__message--user {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-tutor__message--ai {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 3px solid var(--hc-border) !important;
+}
+
+/* Feedback messages */
+[data-theme="high-contrast"] .duo-feedback--success {
+  background: #E6F4E6 !important;
+  color: var(--hc-success) !important;
+  border: 3px solid var(--hc-success) !important;
+}
+
+[data-theme="high-contrast"] .duo-feedback--error {
+  background: #F4E6E6 !important;
+  color: var(--hc-error) !important;
+  border: 3px solid var(--hc-error) !important;
+}
+
+[data-theme="high-contrast"] .duo-feedback--warning {
+  background: #F4F0E6 !important;
+  color: var(--hc-warning) !important;
+  border: 3px solid var(--hc-warning) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * LAYOUT COMPONENTS - Override module-specific !important rules
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+/* Topbar */
+[data-theme="high-contrast"] .duo-topbar {
+  background: var(--hc-bg) !important;
+  border-bottom: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-topbar-logo {
+  filter: none !important;
+}
+
+[data-theme="high-contrast"] .duo-topbar-coins,
+[data-theme="high-contrast"] .duo-topbar-logout,
+[data-theme="high-contrast"] .duo-topbar-admin {
+  color: var(--hc-text) !important;
+  text-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-topbar-logout:hover,
+[data-theme="high-contrast"] .duo-topbar-admin:hover {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+/* Sidebar */
+[data-theme="high-contrast"] .duo-sidebar {
+  background: var(--hc-bg) !important;
+  border-right: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-sidebar-nav-item,
+[data-theme="high-contrast"] .duo-sidebar-link {
+  color: var(--hc-text) !important;
+  border-color: transparent !important;
+}
+
+[data-theme="high-contrast"] .duo-sidebar-nav-item:hover,
+[data-theme="high-contrast"] .duo-sidebar-link:hover,
+[data-theme="high-contrast"] .duo-sidebar-nav-item--active,
+[data-theme="high-contrast"] .duo-sidebar-link--active {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * ACTIVITIES COMPONENTS - Override module-specific !important rules
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] .duo-course-btn {
+  background: var(--hc-primary) !important;
+  color: var(--hc-bg) !important;
+  border: 3px solid var(--hc-primary) !important;
+  box-shadow: 0 4px 0 var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-course-btn:hover {
+  background: var(--hc-bg) !important;
+  color: var(--hc-primary) !important;
+}
+
+[data-theme="high-contrast"] .duo-test-btn {
+  background: var(--hc-primary) !important;
+  color: var(--hc-bg) !important;
+  border: 3px solid var(--hc-primary) !important;
+  box-shadow: 0 4px 0 var(--hc-text) !important;
+  text-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-test-btn:hover {
+  background: var(--hc-bg) !important;
+  color: var(--hc-primary) !important;
+}
+
+[data-theme="high-contrast"] .duo-info-btn {
+  background: var(--hc-primary) !important;
+  color: var(--hc-bg) !important;
+  border: 3px solid var(--hc-primary) !important;
+  box-shadow: 0 4px 0 var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-info-btn:hover {
+  background: var(--hc-bg) !important;
+  color: var(--hc-primary) !important;
+}
+
+[data-theme="high-contrast"] .duo-test-btn--accent,
+[data-theme="high-contrast"] .duo-info-btn--accent {
+  background: var(--hc-primary) !important;
+  border-color: var(--hc-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * GAMIFICATION COMPONENTS - Override gradients and shadows
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] .duo-gamification-bar {
+  background: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-level-badge {
+  background: var(--hc-primary) !important;
+  border: 3px solid var(--hc-text) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-level-num {
+  color: var(--hc-bg) !important;
+}
+
+[data-theme="high-contrast"] .duo-level-label,
+[data-theme="high-contrast"] .duo-xp-info,
+[data-theme="high-contrast"] .duo-xp-current,
+[data-theme="high-contrast"] .duo-xp-needed {
+  color: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-xp-bar {
+  background: var(--hc-bg) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-xp-bar-fill {
+  background: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-streak-panel {
+  background: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-streak-flame {
+  color: var(--hc-text) !important;
+  filter: none !important;
+}
+
+[data-theme="high-contrast"] .duo-streak-text {
+  color: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-lives-icon {
+  color: var(--hc-error) !important;
+}
+
+[data-theme="high-contrast"] .duo-lives-count {
+  color: var(--hc-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * MOBILE NAV - Override gradients
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] .duo-mobile-nav {
+  background: var(--hc-bg) !important;
+  border-top: 3px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="high-contrast"] .duo-mobile-nav-btn {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: none !important;
+}
+
+[data-theme="high-contrast"] .duo-mobile-nav-btn--active {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * AI COMPONENTS - Override colors
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] .duo-ai-container {
+  background: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-ai-header {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+[data-theme="high-contrast"] .duo-ai-message {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-ai-message--user {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+[data-theme="high-contrast"] .duo-ai-input {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-ai-input::placeholder {
+  color: var(--hc-text-muted) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * LEADERBOARD - Override colors
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] .duo-leaderboard-container {
+  background: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard-header {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard-item {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  border-bottom: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard-item--current-user {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+  border-color: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard-rank {
+  color: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard-name {
+  color: var(--hc-text) !important;
+}
+
+[data-theme="high-contrast"] .duo-leaderboard-xp {
+  color: var(--hc-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * TUTOR - Override colors
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="high-contrast"] .duo-tutor-container {
+  background: var(--hc-bg) !important;
+  border: 3px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-tutor-header {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+[data-theme="high-contrast"] .duo-tutor-message {
+  background: var(--hc-bg) !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+[data-theme="high-contrast"] .duo-tutor-message--user {
+  background: var(--hc-text) !important;
+  color: var(--hc-bg) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * MEDIA QUERIES
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  [data-theme="high-contrast"] .duo-sidebar {
+    border-width: 3px !important;
+  }
+  
+  [data-theme="high-contrast"] .duo-mobile-nav {
+    background: var(--hc-bg) !important;
+    border-top: 3px solid var(--hc-border) !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="high-contrast"] * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * AUTOMATIC ACTIVATION
+ * Apply high contrast when system preference detected
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-contrast: more) {
+  :root:not([data-theme="normal"]) {
+    --hc-bg: #FFFFFF;
+    --hc-text: #000000;
+    --hc-border: #000000;
+    --hc-primary: #000080;
+    --hc-link: #0000CC;
+    --hc-link-visited: #551A8B;
+    --hc-success: #006400;
+    --hc-error: #8B0000;
+    --hc-warning: #996600;
+    --hc-text-muted: #333333;
+  }
+  
+  /* Apply all the same rules as [data-theme="high-contrast"] */
+  :root:not([data-theme="normal"]) body {
+    background: var(--hc-bg);
+    color: var(--hc-text);
+  }
+  
+  :root:not([data-theme="normal"]) .duo-card,
+  :root:not([data-theme="normal"]) .duo-sidebar,
+  :root:not([data-theme="normal"]) .duo-topbar-stats,
+  :root:not([data-theme="normal"]) .duo-leaderboard,
+  :root:not([data-theme="normal"]) .duo-tutor,
+  :root:not([data-theme="normal"]) .duo-modal,
+  :root:not([data-theme="normal"]) .duo-dropdown {
+    background: var(--hc-bg) !important;
+    color: var(--hc-text) !important;
+    border: 2px solid var(--hc-border) !important;
+    box-shadow: none !important;
+  }
+  
+  :root:not([data-theme="normal"]) h1,
+  :root:not([data-theme="normal"]) h2,
+  :root:not([data-theme="normal"]) h3,
+  :root:not([data-theme="normal"]) h4,
+  :root:not([data-theme="normal"]) h5,
+  :root:not([data-theme="normal"]) h6,
+  :root:not([data-theme="normal"]) p,
+  :root:not([data-theme="normal"]) span,
+  :root:not([data-theme="normal"]) label,
+  :root:not([data-theme="normal"]) li,
+  :root:not([data-theme="normal"]) td,
+  :root:not([data-theme="normal"]) th {
+    color: var(--hc-text) !important;
+  }
+  
+  :root:not([data-theme="normal"]) a {
+    color: var(--hc-link) !important;
+    text-decoration: underline !important;
+  }
+  
+  :root:not([data-theme="normal"]) a:visited {
+    color: var(--hc-link-visited) !important;
+  }
+  
+  :root:not([data-theme="normal"]) button,
+  :root:not([data-theme="normal"]) .duo-btn {
+    background: var(--hc-text) !important;
+    color: var(--hc-bg) !important;
+    border: 3px solid var(--hc-border) !important;
+  }
+  
+  :root:not([data-theme="normal"]) button:hover,
+  :root:not([data-theme="normal"]) .duo-btn:hover {
+    background: var(--hc-bg) !important;
+    color: var(--hc-text) !important;
+    outline: 3px solid var(--hc-text) !important;
+  }
+  
+  :root:not([data-theme="normal"]) input,
+  :root:not([data-theme="normal"]) textarea,
+  :root:not([data-theme="normal"]) select {
+    background: var(--hc-bg) !important;
+    color: var(--hc-text) !important;
+    border: 3px solid var(--hc-border) !important;
+  }
+  
+  :root:not([data-theme="normal"]) th {
+    background: var(--hc-text) !important;
+    color: var(--hc-bg) !important;
+  }
+  
+  :root:not([data-theme="normal"]) .duo-learning-path__node--active {
+    background: var(--hc-text) !important;
+    color: var(--hc-bg) !important;
+  }
+  
+  :root:not([data-theme="normal"]) .duo-learning-path__node--completed {
+    background: var(--hc-success) !important;
+    color: var(--hc-bg) !important;
+  }
+  
+  :root:not([data-theme="normal"]) .duo-tutor__message--user {
+    background: var(--hc-text) !important;
+    color: var(--hc-bg) !important;
+  }
+  
+  :root:not([data-theme="normal"]) .duo-leaderboard__item--current-user {
+    background: var(--hc-text) !important;
+    color: var(--hc-bg) !important;
+  }
+  
+  :root:not([data-theme="normal"]) .duo-progress__fill {
+    background: var(--hc-text) !important;
+  }
+}

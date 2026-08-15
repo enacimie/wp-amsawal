@@ -1,0 +1,1232 @@
+/*-----------------------------------*\
+  #HEADER (course page)
+\*-----------------------------------*/
+
+.duo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0 var(--space-4);
+}
+
+.duo-course-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.duo-stats {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.duo-coins {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--duo-primary, #0099CC);
+}
+
+/* Section that contains the path (home page) */
+.duo-path-section {
+  margin-bottom: 24px;
+}
+
+.duo-path-section .duo-section-title {
+  margin: 0 0 4px;
+}
+
+/*-----------------------------------*\
+  #PROGRESS BAR
+\*-----------------------------------*/
+
+.duo-progress {
+  margin-bottom: var(--space-7, 28px);
+}
+
+.duo-progress-bar-wrapper {
+  height: 10px;
+  background: var(--duo-border, #e5e5e5);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.duo-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--duo-primary, #0099CC), color-mix(in srgb, var(--duo-primary, #0099CC) 70%, white));
+  border-radius: 5px;
+  transition: width 600ms var(--amsawal-ease-out);
+}
+
+.duo-progress-text {
+  font-size: 0.8rem;
+  color: var(--duo-text-light, #6b7280);
+  font-weight: 600;
+}
+
+/*-----------------------------------*\
+  #THE PATH
+\*-----------------------------------*/
+
+.duo-path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 16px 0;
+  width: 100%;
+}
+
+/* Wider screens: expand the path to use available space */
+@media (min-width: 768px) {
+  .duo-path {
+    max-width: 720px;
+    gap: 10px;
+  }
+
+  .duo-node {
+    max-width: 480px;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .duo-node--left {
+    transform: translateX(-100px);
+  }
+
+  .duo-node--right {
+    transform: translateX(100px);
+  }
+
+  .duo-node-circle {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    font-size: 1.6rem;
+  }
+
+  .duo-node-label {
+    font-size: 1rem;
+  }
+
+  .duo-node-xp {
+    font-size: 0.8rem;
+    padding: 3px 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .duo-path {
+    max-width: 820px;
+    gap: 12px;
+    padding: 24px 0;
+  }
+
+  .duo-node {
+    max-width: 520px;
+    padding: var(--space-4) var(--space-6);
+    gap: var(--space-5);
+  }
+
+  .duo-node--left {
+    transform: translateX(-120px);
+  }
+
+  .duo-node--right {
+    transform: translateX(120px);
+  }
+
+  .duo-node-circle {
+    width: 76px !important;
+    height: 76px !important;
+    min-width: 76px;
+    font-size: 1.7rem;
+  }
+
+  .duo-node-label {
+    font-size: 1.05rem;
+  }
+
+  .duo-node-xp {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    margin-top: 6px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .duo-path {
+    max-width: 960px;
+  }
+
+  .duo-node {
+    max-width: 580px;
+    padding: var(--space-4) var(--space-7);
+    gap: var(--space-6);
+  }
+
+  .duo-node--left {
+    transform: translateX(-140px);
+  }
+
+  .duo-node--right {
+    transform: translateX(140px);
+  }
+
+  .duo-node-circle {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px;
+    font-size: 1.8rem;
+  }
+
+  .duo-node-label {
+    font-size: 1.1rem;
+  }
+
+  .duo-node-xp {
+    font-size: 0.9rem;
+    padding: 5px 14px;
+    margin-top: 8px;
+  }
+}
+
+/*-----------------------------------*\
+  #NODE
+\*-----------------------------------*/
+
+.duo-node {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 420px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--amsawal-radius);
+  transition: transform var(--amsawal-duration-fast) ease, box-shadow var(--amsawal-duration-fast) ease;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  background: var(--duo-card, #fff);
+}
+
+/* Zig-zag pattern — offset via transform, predictable and symmetrical */
+.duo-node--left {
+  transform: translateX(-80px);
+}
+
+.duo-node--right {
+  transform: translateX(80px);
+}
+
+.duo-node--center {
+  transform: translateX(0);
+}
+
+/*-----------------------------------*\
+  #NODE MOBILE — Responsive overrides
+\*-----------------------------------*/
+@media (max-width: 480px) {
+  .duo-path {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .duo-node {
+    max-width: 100%;
+    padding: var(--space-2) var(--space-2);
+    gap: var(--space-2);
+  }
+
+  .duo-node--left {
+    transform: translateX(-24px);
+  }
+
+  .duo-node--right {
+    transform: translateX(24px);
+  }
+
+  .duo-node--center {
+    transform: translateX(0);
+  }
+
+  .duo-node--current {
+    padding: var(--space-2) var(--space-2);
+  }
+
+  .duo-node--current:hover {
+    transform: none;
+  }
+
+  .duo-node-circle {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    font-size: 1.1rem;
+  }
+
+  .duo-node--current .duo-node-circle {
+    border-width: 3px;
+  }
+
+  .duo-node-label {
+    font-size: 0.85rem;
+  }
+
+  .duo-node-badge {
+    top: -36px;
+    font-size: 0.65rem;
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .duo-node-stars {
+    bottom: -14px;
+    font-size: 0.6rem;
+  }
+}
+
+/* Respect reduced motion and hover scale */
+.duo-node--left:hover {
+  transform: translateX(-80px) scale(1.01);
+}
+
+.duo-node--right:hover {
+  transform: translateX(80px) scale(1.01);
+}
+
+@media (min-width: 768px) {
+  .duo-node--left:hover {
+    transform: translateX(-100px) scale(1.01);
+  }
+  .duo-node--right:hover {
+    transform: translateX(100px) scale(1.01);
+  }
+}
+
+@media (min-width: 1024px) {
+  .duo-node--left:hover {
+    transform: translateX(-120px) scale(1.01);
+  }
+  .duo-node--right:hover {
+    transform: translateX(120px) scale(1.01);
+  }
+}
+
+@media (min-width: 1280px) {
+  .duo-node--left:hover {
+    transform: translateX(-140px) scale(1.01);
+  }
+  .duo-node--right:hover {
+    transform: translateX(140px) scale(1.01);
+  }
+}
+
+a.duo-node {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.duo-node--current:hover,
+a.duo-node--completed:hover {
+  box-shadow: var(--duo-shadow-lg);
+  transform: translateY(-2px);
+}
+
+a.duo-node--current:active,
+a.duo-node--completed:active {
+  transform: translateY(2px);
+  box-shadow: var(--duo-shadow);
+}
+
+.duo-node--current {
+  background: var(--duo-card);
+  box-shadow: var(--duo-shadow);
+}
+
+.duo-node--completed {
+  opacity: 0.7;
+}
+
+.duo-node--locked {
+  pointer-events: none;
+}
+
+.duo-node--locked .duo-node-circle {
+  opacity: 0.5;
+}
+
+.duo-node--checkpoint {
+  background: var(--duo-card);
+  box-shadow: var(--duo-shadow);
+  margin-top: 4px;
+}
+
+@keyframes duo-node-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/*-----------------------------------*\
+  #NODE CIRCLE — Learning path step indicator (Amsawal-style)
+  Now with levels/stars and floating START badge
+\*-----------------------------------*/
+
+.duo-node-circle {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 200ms var(--amsawal-ease-out);
+  cursor: pointer;
+  /* 3D effect like Amsawal (kept for iconicity) */
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.12),
+              inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.duo-node-circle:active {
+  transform: scale(0.95) translateY(4px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Completed node — solid section color (darker variant) with checkmark
+   WCAG 2.2 AA: white text on section color must have ≥ 4.5:1 contrast.
+   Using color-mix to a darker version of the section color. */
+.duo-node--completed .duo-node-circle {
+  background: linear-gradient(135deg,
+    var(--node-section-color, var(--duo-primary, #0099CC)),
+    color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 70%, black));
+  color: #fff;
+  box-shadow: 0 8px 0 color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 50%, black),
+              inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.duo-node--completed .duo-node-circle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 50%, black),
+              inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Current node — white with thick border + glow (color set per section) */
+.duo-node--current .duo-node-circle {
+  background: linear-gradient(135deg, var(--duo-card, #fff), color-mix(in srgb, var(--duo-card, #fff) 90%, var(--duo-primary, #0099CC)));
+  border: 4px solid var(--node-section-color, var(--duo-primary, #0099CC));
+  color: var(--node-section-color, var(--duo-primary, #0099CC));
+  box-shadow: 0 8px 0 color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 60%, black),
+              inset 0 -4px 0 rgba(0, 0, 0, 0.05),
+              0 0 0 6px color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 15%, transparent);
+}
+
+.duo-node--current .duo-node-circle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 60%, black),
+              inset 0 -4px 0 rgba(0, 0, 0, 0.05),
+              0 0 0 8px color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 20%, transparent);
+}
+
+/* Locked node — muted gray
+   WCAG 2.2 AA: text on light gray must be ≥ 4.5:1 contrast.
+   Using #4b5563 (slate-600) for 5.7:1 contrast on #ededed. */
+.duo-node--locked .duo-node-circle {
+  background: linear-gradient(135deg, #ededed, color-mix(in srgb, #ededed 60%, white));
+  color: #4b5563;
+  box-shadow: 0 8px 0 #c4c4c4,
+              inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+  cursor: not-allowed;
+}
+
+/* Checkpoint node — gold/tifinagh */
+.duo-node--checkpoint .duo-node-circle {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #fff;
+  box-shadow: 0 8px 0 #b45309,
+              inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Checkmark for completed nodes — white on section color background
+   WCAG 2.2 AA: white (#fff) on dark section color gradient provides > 4.5:1 contrast */
+.duo-node-check {
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Star levels indicator */
+.duo-node-stars {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  font-size: 0.7rem;
+}
+
+.duo-node-star {
+  color: #fbbf24;
+  opacity: 0.3;
+}
+
+.duo-node-star.earned {
+  opacity: 1;
+  filter: drop-shadow(0 0 2px #fbbf24);
+}
+
+/* Floating EMPEZAR badge */
+.duo-node-badge {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--duo-card, #fff);
+  color: var(--node-section-color, var(--duo-primary, #0099CC));
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  z-index: 10;
+  animation: duo-badge-bounce 2s var(--amsawal-ease-out) infinite;
+  border: 1px solid color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 25%, transparent);
+}
+
+.duo-node-badge::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--duo-card, #fff);
+}
+
+@keyframes duo-badge-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-node-badge {
+    animation: none;
+  }
+}
+
+.duo-node-check {
+  animation: duo-pop-in 300ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.duo-node-lock {
+  opacity: 0.85;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lesson topic icon (dashicon) — sized to match the node circle */
+.duo-node-icon {
+  font-size: 28px !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+/* Make the nav-icon SVGs (used for check/lock) fill the node circle */
+.duo-node-circle .duo-nav-icon {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 28px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.duo-node-circle .duo-nav-icon svg {
+  width: 28px !important;
+  height: 28px !important;
+  stroke-width: 2.5 !important;
+}
+
+/* Glow pulse for current node */
+.duo-node-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 3px solid var(--amsawal-primary);
+  animation: duo-pulse-glow 2s var(--amsawal-ease-in-out) infinite;
+  opacity: 0.3;
+}
+
+@keyframes duo-pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-node-glow {
+    animation: none;
+  }
+}
+
+@keyframes duo-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes duo-pop-in {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/*-----------------------------------*\
+  #NODE LABEL
+\*-----------------------------------*/
+
+.duo-node-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  flex: 1;
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-node--completed .duo-node-label {
+  color: var(--node-section-color, var(--duo-primary, #0099CC));
+}
+
+.duo-node--current .duo-node-label {
+  color: var(--node-section-color, var(--duo-primary, #0099CC));
+  font-weight: 700;
+}
+
+.duo-node--locked .duo-node-label {
+  /* WCAG 2.2 AA: 4.5:1+ contrast on white */
+  color: #6b7280;
+  font-weight: 500;
+}
+
+
+/*-----------------------------------*\
+  #XP BADGE (per lesson)
+\*-----------------------------------*/
+
+.duo-node-xp {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.duo-node-xp--earned {
+  background: color-mix(in srgb, var(--node-section-color, var(--duo-primary, #0099CC)) 12%, transparent);
+  /* WCAG 2.2 AA: text uses the section color directly (5-7:1 on light bg) */
+  color: var(--node-section-color, var(--duo-primary, #0099CC));
+}
+
+.duo-node-xp--available {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+
+/*-----------------------------------*\
+  #SECTION DIVIDER — Horizontal line with centered text (Amsawal-style)
+  Separates different units/sections in the learning path
+\*-----------------------------------*/
+
+.duo-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 32px auto;
+  padding: 0 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .duo-section-divider {
+    max-width: 720px;
+    margin: 40px auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .duo-section-divider {
+    max-width: 820px;
+    margin: 48px auto;
+    gap: 20px;
+  }
+
+  .duo-section-divider-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .duo-section-divider-text {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .duo-section-divider {
+    max-width: 960px;
+  }
+}
+
+.duo-section-divider::before,
+.duo-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--duo-border, #e5e5e5), transparent);
+}
+
+.duo-section-divider-icon {
+  font-size: 18px;
+  color: var(--duo-text-light, #6b7280);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 50%;
+}
+
+.duo-section-divider-text {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--duo-text-light, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  padding: 0 8px;
+}
+
+/*-----------------------------------*\
+  #NODE UNITS — Container for each section of nodes
+\*-----------------------------------*/
+
+.duo-unit-container {
+  padding: 20px 0;
+  position: relative;
+}
+
+.duo-unit-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, var(--duo-card, #fff) 0%, color-mix(in srgb, var(--duo-primary, #0099CC) 6%, var(--duo-card, #fff)) 100%);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 16px;
+  margin-top: 48px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform var(--amsawal-duration-fast) var(--amsawal-ease-out), box-shadow var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+.duo-unit-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.duo-unit-header h2,
+.duo-unit-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.duo-unit-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.duo-unit-desc {
+  font-size: 0.875rem;
+  color: var(--duo-text-light, #6b7280);
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+.duo-unit-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--duo-primary, #0099CC), color-mix(in srgb, var(--duo-primary, #0099CC) 70%, white));
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--duo-primary, #0099CC) 25%, transparent);
+  font-family: inherit;
+}
+
+.duo-unit-guide-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--duo-primary, #0099CC) 35%, transparent);
+}
+
+.duo-unit-guide-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--duo-primary, #0099CC) 25%, transparent);
+}
+
+.duo-unit-guide-btn:focus-visible {
+  outline: 3px solid var(--duo-primary, #0099CC);
+  outline-offset: 2px;
+}
+
+/* Section completed state */
+.duo-unit-header--complete {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, #10b981 8%, #fff) 100%);
+}
+
+.duo-unit-guide-btn--complete {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: auto;
+  box-shadow: 0 2px 8px color-mix(in srgb, #10b981 25%, transparent);
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+.duo-unit-guide-btn--complete:hover {
+  transform: none;
+  box-shadow: 0 2px 8px color-mix(in srgb, #10b981 25%, transparent);
+}
+
+.duo-unit-header--complete .duo-unit-title {
+  color: #059669;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 600px) {
+  .duo-unit-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .duo-unit-guide-btn,
+  .duo-unit-guide-btn--complete {
+    margin-left: 0;
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+/*-----------------------------------*\
+  #GUIDE MODAL — Section theory modal
+\*-----------------------------------*/
+
+.duo-guide-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: duo-guide-fade-in 200ms ease-out;
+}
+
+@keyframes duo-guide-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.duo-guide-modal {
+  background: var(--duo-card, #fff);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: duo-guide-slide-up 300ms ease-out;
+  border: 1px solid var(--duo-border, #e5e5e5);
+}
+
+@keyframes duo-guide-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.duo-guide-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--duo-border, #e5e5e5);
+}
+
+.duo-guide-modal-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-guide-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--duo-text-light, #6b7280);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 150ms ease;
+  line-height: 1;
+}
+
+.duo-guide-modal-close:hover {
+  background: var(--duo-border, #e5e5e5);
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-guide-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-guide-modal-body h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--duo-primary, #0099CC);
+}
+
+.duo-guide-modal-body h4 {
+  margin: 20px 0 8px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-guide-modal-body p {
+  margin: 0 0 12px 0;
+}
+
+.duo-guide-modal-body ul {
+  margin: 8px 0 16px 0;
+  padding-left: 24px;
+}
+
+.duo-guide-modal-body li {
+  margin-bottom: 8px;
+}
+
+.duo-guide-modal-body strong {
+  color: var(--duo-primary, #0099CC);
+  font-weight: 600;
+}
+
+.duo-guide-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--duo-border, #e5e5e5);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.duo-guide-modal-btn {
+  background: linear-gradient(135deg, var(--duo-primary, #0099CC), color-mix(in srgb, var(--duo-primary, #0099CC) 70%, white));
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 28px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 150ms ease;
+  font-family: inherit;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--duo-primary, #0099CC) 25%, transparent);
+}
+
+.duo-guide-modal-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--duo-primary, #0099CC) 35%, transparent);
+}
+
+.duo-guide-modal-btn:active {
+  transform: translateY(1px);
+}
+
+.duo-guide-modal-btn:focus-visible {
+  outline: 3px solid var(--duo-primary, #0099CC);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .duo-guide-modal {
+    max-height: 90vh;
+    margin: 10px;
+  }
+  
+  .duo-guide-modal-header {
+    padding: 16px 20px;
+  }
+  
+  .duo-guide-modal-body {
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .duo-guide-modal-footer {
+    padding: 12px 20px;
+  }
+}
+
+/*-----------------------------------*\
+  #TREASURE CHEST — Reward on learning path (Amsawal-style)
+\*-----------------------------------*/
+
+.duo-treasure-chest {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  cursor: pointer;
+  position: relative;
+  margin: 10px 0;
+  animation: duo-chest-float 3s var(--amsawal-ease-in-out) infinite;
+}
+
+@keyframes duo-chest-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-treasure-chest {
+    animation: none;
+  }
+}
+
+.duo-treasure-chest--locked {
+  filter: grayscale(0.8) brightness(0.7);
+  cursor: not-allowed;
+  animation: none;
+}
+
+.duo-treasure-chest--opened {
+  animation: duo-chest-open 500ms var(--amsawal-ease-out) forwards;
+}
+
+@keyframes duo-chest-open {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Sparkle effect on treasure */
+.duo-treasure-sparkle {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  animation: duo-sparkle 1.5s var(--amsawal-ease-in-out) infinite;
+}
+
+@keyframes duo-sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-treasure-sparkle {
+    animation: none;
+  }
+}
+
+/*-----------------------------------*\
+  #UNIT COMPLETION CARD — "What's next" at bottom (Amsawal-style)
+\*-----------------------------------*/
+
+.duo-unit-complete-card {
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 40px auto;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.duo-unit-complete-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  margin: 0 0 8px;
+}
+
+.duo-unit-complete-card p {
+  font-size: 0.9rem;
+  color: var(--duo-text-light, #6b7280);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.duo-unit-complete-btn {
+  background: linear-gradient(135deg, var(--duo-primary, #0099CC), color-mix(in srgb, var(--duo-primary, #0099CC) 70%, white));
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 32px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  font-family: inherit;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--duo-primary, #0099CC) 25%, transparent);
+}
+
+.duo-unit-complete-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--duo-primary, #0099CC) 35%, transparent);
+}
+
+.duo-unit-complete-btn:active {
+  transform: translateY(1px);
+}
+/* F7-6: Focus-visible para nodos */
+.duo-node-circle:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 4px;
+}
+
+.duo-node-badge:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+/* F7-9: High contrast mode */
+@media (prefers-contrast: more) {
+  .duo-node-circle {
+    border-width: 3px;
+  }
+
+  .duo-node--current .duo-node-circle {
+    border-width: 5px;
+  }
+
+  .duo-unit-header {
+    border-width: 2px;
+  }
+}
+
+/* F7-12: Loading state para node popover */
+.duo-node-popover--loading {
+  position: relative;
+  min-height: 120px;
+}
+
+.duo-node-popover--loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    var(--amsawal-border) 0%,
+    var(--amsawal-bg) 50%,
+    var(--amsawal-border) 100%);
+  background-size: 200% 100%;
+  animation: duo-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--amsawal-radius);
+}
+
+@keyframes duo-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* F7-13: Micro-interacciones en section headers (ripple removed — clean modern style) */
+
+/* F12-5: Scroll-triggered animations removed - causing visibility issues */

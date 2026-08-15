@@ -1,0 +1,140 @@
+# WP Amsawal - Spanish Translations
+# Copyright (C) 2026 Amsawal Project
+# This file is distributed under the same license as the WP Amsawal plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Amsawal 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-09 12:00+0000\n"
+"PO-Revision-Date: 2026-06-09 12:00+0000\n"
+"Last-Translator: Amsawal Team\n"
+"Language-Team: Spanish\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wp-amsawal-view.php
+msgid "Sección"
+msgstr "Sección"
+
+#: wp-amsawal-view.php
+msgid "Lección"
+msgstr "Lección"
+
+#: wp-amsawal-view.php
+msgid "EMPEZAR"
+msgstr "EMPEZAR"
+
+#: wp-amsawal-view.php
+msgid "COMPLETADO"
+msgstr "COMPLETADO"
+
+#: wp-amsawal-view.php
+msgid "BLOQUEADO"
+msgstr "BLOQUEADO"
+
+#: wp-amsawal-view.php
+msgid "GUÍA"
+msgstr "GUÍA"
+
+#: wp-amsawal-view.php
+msgid "TEST"
+msgstr "TEST"
+
+#: wp-amsawal-view.php
+msgid "INFO"
+msgstr "INFO"
+
+#: wp-amsawal-view.php
+msgid "Racha"
+msgstr "Racha"
+
+#: wp-amsawal-view.php
+msgid "Estrella"
+msgstr "Estrella"
+
+#: wp-amsawal-view.php
+msgid "Completado"
+msgstr "Completado"
+
+#: wp-amsawal-view.php
+msgid "Bloqueado"
+msgstr "Bloqueado"
+
+#: wp-amsawal-view.php
+msgid "días"
+msgstr "días"
+
+#: wp-amsawal-view.php
+msgid "Nivel"
+msgstr "Nivel"
+
+#: wp-amsawal-view.php
+msgid "XP"
+msgstr "XP"
+
+#: wp-amsawal-view.php
+msgid "Monedas"
+msgstr "Monedas"
+
+#: wp-amsawal-view.php
+msgid "Vidas"
+msgstr "Vidas"
+
+#: wp-amsawal-view.php
+msgid "Ligas"
+msgstr "Ligas"
+
+#: wp-amsawal-view.php
+msgid "Perfil"
+msgstr "Perfil"
+
+#: wp-amsawal-view.php
+msgid "Aprender"
+msgstr "Aprender"
+
+#: wp-amsawal-view.php
+msgid "Notas"
+msgstr "Notas"
+
+#: wp-amsawal-view.php
+msgid "Top Monedas"
+msgstr "Top Monedas"
+
+#: wp-amsawal-view.php
+msgid "Ver ligas"
+msgstr "Ver ligas"
+
+#: wp-amsawal-view.php
+msgid "Gana"
+msgstr "Gana"
+
+#: wp-amsawal-view.php
+msgid "hoy"
+msgstr "hoy"
+
+#: wp-amsawal-view.php
+msgid "¡Azul, admin!"
+msgstr "¡Azul, admin!"
+
+#: wp-amsawal-view.php
+msgid "Primeros pasos: El alfabeto"
+msgstr "Primeros pasos: El alfabeto"
+
+#: wp-amsawal-view.php
+msgid "Saludos y Presentaciones"
+msgstr "Saludos y Presentaciones"
+
+#: wp-amsawal-view.php
+msgid "Números y Tiempo"
+msgstr "Números y Tiempo"
+
+#: wp-amsawal-view.php
+msgid "Familia y Personas"
+msgstr "Familia y Personas"
+
+#: wp-amsawal-view.php
+msgid "Adjetivos y Descripciones"
+msgstr "Adjetivos y Descripciones"

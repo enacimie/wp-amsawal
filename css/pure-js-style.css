@@ -1,0 +1,434 @@
+/*-----------------------------------*\
+  #AMSAWAL PLUGIN — Modular CSS
+  Educational platform with Amazigh identity
+  Duolingo-style immersive learning
+\*-----------------------------------*/
+
+/* Import Google Fonts: Quicksand for headings, Inter for body */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Import all modules */
+@import url('./modules/_variables.css');
+@import url('./modules/_layout.css');
+@import url('./modules/_mobile-nav.css');
+@import url('./modules/_learning-path.css?v=1782167341b');
+@import url('./modules/_activities.css');
+@import url('./modules/_ai-components.css');
+@import url('./modules/_gamification.css');
+@import url('./modules/_leaderboard.css');
+@import url('./modules/_feedback-toast.css');
+@import url('./modules/_tutor.css');
+@import url('./modules/_high-contrast.css');
+@import url('./modules/_dark-mode.css');
+@import url('./modules/_wcag22-compliance.css');
+@import url('./modules/_profile.css');
+@import url('./modules/_achievements.css');
+@import url('./modules/_page-layout.css');
+@import url('./modules/_review.css');
+@import url('./modules/_print.css');
+
+/*-----------------------------------*\
+  #BASE STYLES — Global resets and defaults
+\*-----------------------------------*/
+
+/* Strip theme chrome */
+.amsawal-immersive .wp-site-blocks,
+.amsawal-immersive .entry-content,
+.amsawal-immersive .post-content,
+.amsawal-immersive .page-content,
+.amsawal-immersive main {
+  padding: 0 !important;
+  max-width: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove article wrapper */
+.amsawal-immersive article,
+.amsawal-immersive .post {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  max-width: none !important;
+}
+
+/* Page entry animation */
+.duo-container,
+.duo-ai-activity {
+  animation: duo-fade-up 350ms ease-out;
+}
+
+@keyframes duo-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth page transitions */
+.duo-ai-activity a,
+.duo-node a {
+  transition: transform 150ms cubic-bezier(0.2, 0.9, 0.3, 1),
+              box-shadow 150ms cubic-bezier(0.2, 0.9, 0.3, 1),
+              opacity 150ms ease;
+}
+
+/*-----------------------------------*\
+  #PERFORMANCE — Lazy loading, GPU acceleration, reduced motion
+\*-----------------------------------*/
+
+/* Lazy loading placeholder */
+img.lazy {
+  background: linear-gradient(90deg,
+    var(--amsawal-border) 0%,
+    var(--amsawal-bg) 50%,
+    var(--amsawal-border) 100%);
+  background-size: 200% 100%;
+  animation: duo-skeleton 1.5s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+@keyframes duo-skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+img.lazy.loaded {
+  background: none;
+  animation: none;
+  opacity: 1;
+}
+
+/* GPU acceleration for animations */
+.duo-node-circle,
+.duo-confetti-canvas,
+.duo-level-up-icon,
+.duo-achievement-unlock,
+.duo-streak-celebration {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/*-----------------------------------*\
+  #PRINT STYLES — Remove all animations
+\*-----------------------------------*/
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.duo-info-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  margin: 12px 0;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  color: #57606a;
+  font-size: 14px;
+}
+
+.duo-dt-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #d0d7de;
+  border-top-color: var(--amsawal-primary);
+  border-radius: 50%;
+  animation: duo-dt-spin 0.8s linear infinite;
+}
+
+@keyframes duo-dt-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-dt-spinner { animation: none; border-top-color: var(--amsawal-primary); }
+}
+
+/* AI Admin Page */
+.duo-ai-admin .card {
+  background: #fff;
+  border: 1px solid #ccd0d4;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.duo-ai-admin h3 {
+  margin-top: 0;
+  font-size: 1.1em;
+}
+
+/*-----------------------------------*\
+  #ACTIVITY LEGEND TOOLTIP (F1-2)
+\*-----------------------------------*/
+
+.duo-act-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+  color: var(--duo-text-light);
+  font-size: 0.85rem;
+  cursor: help;
+  position: relative;
+}
+
+.duo-act-legend-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--duo-card);
+  border: 1px solid var(--duo-locked);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: var(--duo-text);
+  white-space: nowrap;
+  box-shadow: var(--duo-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+  z-index: 10;
+}
+
+.duo-act-legend:hover .duo-act-legend-tooltip,
+.duo-act-legend:focus .duo-act-legend-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-act-legend-tooltip {
+    transition: none;
+  }
+}
+
+/*-----------------------------------*\
+  #BUTTON VARIANTS — Base + modifiers
+\*-----------------------------------*/
+
+/* Base button */
+.duo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--amsawal-radius-sm);
+  cursor: pointer;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  white-space: nowrap;
+}
+
+/* Ghost button — outlined, transparent */
+.duo-btn--ghost {
+  background: transparent;
+  color: var(--amsawal-primary);
+  border: 2px solid var(--amsawal-primary);
+  box-shadow: none;
+}
+
+.duo-btn--ghost:hover {
+  background: rgba(var(--color-primary), 0.08);
+  border-color: var(--amsawal-primary-dark);
+  color: var(--amsawal-primary-dark);
+}
+
+.duo-btn--ghost:active {
+  transform: scale(0.95);
+  background: rgba(var(--color-primary), 0.15);
+}
+
+/* Primary button */
+.duo-btn--primary {
+  background: var(--amsawal-primary);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--amsawal-primary-dark);
+}
+
+.duo-btn--primary:hover {
+  background: var(--amsawal-primary-dark);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--amsawal-primary-dark);
+}
+
+.duo-btn--primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 transparent;
+}
+
+/* Secondary button */
+.duo-btn--secondary {
+  background: var(--amsawal-bg);
+  color: var(--amsawal-text);
+  border: 2px solid var(--amsawal-border);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+}
+
+.duo-btn--secondary:hover {
+  background: var(--amsawal-border);
+  border-color: var(--amsawal-text-muted);
+  color: var(--amsawal-text);
+}
+
+.duo-btn--secondary:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 transparent;
+}
+
+/* Button 3D + Shine */
+.duo-btn--3d {
+  box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+  transform: translateZ(0);
+}
+.duo-btn--3d:hover { filter: brightness(1.05); }
+.duo-btn--3d:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 transparent;
+}
+.duo-btn--shine {
+  position: relative;
+  overflow: hidden;
+}
+.duo-btn--shine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%, transparent 100%);
+  transition: left 600ms var(--ease-out);
+  pointer-events: none;
+}
+.duo-btn--shine:hover::after { left: 100%; }
+
+/*-----------------------------------*\
+  #NAV ICONS — SVG icon wrappers
+\*-----------------------------------*/
+
+.duo-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+  font-family: 'dashicons';
+  line-height: 1;
+}
+
+.duo-nav-icon--sm {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.duo-nav-icon--md {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.duo-nav-icon--lg {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+/*-----------------------------------*\
+  #DARK MODE — prefers-color-scheme
+\*-----------------------------------*/
+
+/* NOTE: Light/dark theme variable definitions removed from this file.
+ * They are maintained centrally in:
+ *   - ./modules/_variables.css  (light theme, :root defaults)
+ *   - ./modules/_dark-mode.css  (dark theme overrides via prefers-color-scheme and [data-theme])
+ */
+
+/*-----------------------------------*\
+  #LOGIN PAGE (activate link)
+\*-----------------------------------*/
+
+.activate_amsawal {
+  position: absolute;
+  bottom: 50px;
+  left: 8%;
+  right: 8%;
+  display: block;
+  text-align: center;
+  color: #000;
+  background: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+
+/*-----------------------------------*\
+  #H5P SKELETON LOADER
+\*-----------------------------------*/
+
+.duo-h5p-skeleton {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(90deg, 
+    var(--amsawal-border) 25%, 
+    var(--amsawal-bg) 37%, 
+    var(--amsawal-border) 63%);
+  background-size: 400% 100%;
+  animation: duo-skeleton-loading 1.4s ease infinite;
+  border-radius: var(--amsawal-radius);
+  margin: 16px 0;
+}
+
+@keyframes duo-skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/*-----------------------------------*\
+  #RANK-CHANGE ANIMATION
+\*-----------------------------------*/
+
+@keyframes rank-pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.duo-rank-change {
+  display: inline-block;
+  animation: rank-pulse 0.6s var(--spring);
+}
+
+/*-----------------------------------*\
+  #PREFERS-CONTRAST (high contrast)
+\*-----------------------------------*/
+
+@media (prefers-contrast: more) {
+  .duo-btn { border: 2px solid currentColor; }
+  .duo-course-card { border-width: 3px; }
+  .duo-node-circle { border-width: 3px; }
+}

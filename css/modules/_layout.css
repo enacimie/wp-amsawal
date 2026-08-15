@@ -1,0 +1,635 @@
+/*-----------------------------------*\
+  #CONTAINER — Main content area
+\*-----------------------------------*/
+
+.duo-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 24px 100px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--duo-text);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+@media (min-width: 768px) {
+  .duo-container {
+    max-width: 760px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .duo-container {
+    max-width: 1080px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .duo-container {
+    max-width: 1200px;
+  }
+}
+
+/* Global heading font — Quicksand for educational feel */
+.duo-container h1,
+.duo-container h2,
+.duo-container h3,
+.duo-container h4,
+.duo-container h5,
+.duo-container h6 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+/*-----------------------------------*\
+  #TOP BAR — Amsawal educational header
+  Semantic <header role="banner"> used for all users.
+  CRITICAL: Use !important to override theme styles
+\*-----------------------------------*/
+
+.duo-topbar,
+header.duo-topbar {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  padding-top: calc(12px + env(safe-area-inset-top));
+  /* CRITICAL: Force gradient with !important */
+  background: linear-gradient(135deg, var(--amsawal-primary) 0%, var(--amsawal-primary-dark) 100%) !important;
+  border-bottom: 3px solid var(--amsawal-tifinagh) !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--amsawal-z-header) !important;
+  height: 60px;
+  box-shadow: var(--amsawal-shadow-lg) !important;
+}
+
+.duo-topbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.duo-topbar-brand a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.duo-topbar-logo {
+  height: 36px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(var(--color-eclipse),0.2));
+}
+
+.duo-topbar-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.duo-topbar-stats .duo-stat-item {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  background: rgba(var(--color-snow), 0.15);
+  color: rgba(var(--color-snow), 1);
+  border: 1px solid rgba(var(--color-snow), 0.25);
+}
+
+.duo-topbar-stats .duo-stat-item:hover {
+  background: rgba(var(--color-snow), 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * TOPBAR DROPDOWN MENU — User stats and actions
+ * ═══════════════════════════════════════════════════════════════ */
+
+.duo-topbar-end {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.duo-topbar-profile {
+  display: flex;
+  align-items: center;
+}
+
+.duo-topbar-menu {
+  position: relative;
+}
+
+.duo-topbar-toggle {
+  background: rgba(var(--color-snow), 0.15);
+  border: 1px solid rgba(var(--color-snow), 0.3);
+  color: rgba(var(--color-snow), 1);
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  padding: 0;
+}
+
+.duo-topbar-toggle .dashicons {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.duo-topbar-toggle:hover {
+  background: rgba(var(--color-snow), 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--color-snow), 0.1);
+  transform: scale(1.05);
+}
+
+.duo-topbar-toggle:focus-visible {
+  outline: 3px solid var(--amsawal-tifinagh);
+  outline-offset: 2px;
+}
+
+.duo-topbar-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 280px;
+  background: var(--amsawal-card);
+  border: 1px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius-lg);
+  box-shadow: 0 8px 24px rgba(var(--color-eclipse), 0.15), 0 2px 8px rgba(var(--color-eclipse), 0.08);
+  z-index: var(--amsawal-z-dropdown);
+  overflow: hidden;
+  animation: duo-dropdown-enter 200ms var(--amsawal-ease-out);
+}
+
+@keyframes duo-dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.duo-topbar-dropdown[hidden] {
+  display: none;
+}
+
+.duo-dropdown-stats {
+  padding: 16px;
+  background: var(--amsawal-bg);
+  border-bottom: 1px solid var(--amsawal-border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.duo-dropdown-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: var(--amsawal-card);
+  border-radius: var(--amsawal-radius-sm);
+  border: 2px solid var(--amsawal-border);
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+.duo-dropdown-stat:hover {
+  border-color: var(--amsawal-primary);
+  box-shadow: 0 2px 8px rgba(var(--color-primary), 0.1);
+  transform: translateY(-2px);
+}
+
+.duo-dropdown-stat--streak { border-left: 4px solid var(--amsawal-warning); }
+.duo-dropdown-stat--lives { border-left: 4px solid var(--amsawal-error); }
+.duo-dropdown-stat--due { border-left: 4px solid var(--amsawal-primary); }
+.duo-dropdown-stat--coins { border-left: 4px solid var(--amsawal-success); }
+
+.duo-dropdown-stat-label {
+  font-size: 0.75rem;
+  color: var(--amsawal-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.duo-dropdown-stat-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--amsawal-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.duo-dropdown-actions,
+.duo-dropdown-action,
+.duo-dropdown-action:hover,
+.duo-dropdown-action:active,
+.duo-dropdown-action:focus-visible {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .duo-topbar-dropdown {
+    min-width: 240px;
+  }
+  
+  .duo-dropdown-stats {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .duo-dropdown-stat {
+    padding: 6px;
+  }
+  
+  .duo-dropdown-stat-label {
+    font-size: 0.7rem;
+  }
+  
+  .duo-dropdown-stat-value {
+    font-size: 0.9rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * SIDEBAR — HIDDEN (mobile-first: only topbar + bottombar)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.duo-sidebar {
+  display: none !important;
+}
+
+aside.duo-sidebar[hidden] {
+  display: none !important;
+}
+
+.duo-sidebar-top {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(var(--color-snow), 0.1);
+  flex-shrink: 0;
+  color: rgba(var(--color-snow), 1);
+}
+
+.duo-sidebar-logo {
+  height: 48px;
+  width: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 8px rgba(var(--color-eclipse),0.15));
+}
+
+/* Mascot container */
+.duo-mascot-sidebar {
+  text-align: center;
+  padding: 20px 16px;
+  border-bottom: 2px solid rgba(var(--color-snow), 0.15);
+  flex-shrink: 0;
+  color: rgba(var(--color-snow), 1);
+}
+
+.duo-yaz-mascot {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+  animation: mascot-float 3s ease-in-out infinite;
+}
+
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-yaz-mascot {
+    animation: none;
+  }
+}
+
+.duo-mascot-bubble {
+  background: var(--amsawal-card);
+  color: var(--amsawal-text);
+  padding: 12px 16px;
+  border-radius: var(--amsawal-radius-lg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  box-shadow: var(--amsawal-shadow);
+}
+
+/* League summary in sidebar */
+.duo-league-summary {
+  padding: 16px;
+  border-top: 1px solid rgba(var(--color-snow), 0.15);
+  border-bottom: 1px solid rgba(var(--color-snow), 0.1);
+  background: rgba(var(--color-snow), 0.05);
+  flex-shrink: 0;
+}
+
+.duo-league-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.duo-league-summary-header h2 {
+  color: rgba(var(--color-snow), 1);
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.duo-league-summary-header a {
+  color: rgba(var(--color-snow), 0.8);
+  font-size: 0.8rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--amsawal-duration-fast);
+}
+
+.duo-league-summary-header a:hover {
+  color: rgba(var(--color-snow), 1);
+  text-decoration: none;
+}
+
+/* Sidebar navigation */
+.duo-sidebar-nav {
+  margin-top: auto;
+  padding: 16px 0;
+  border-top: 1px solid rgba(var(--color-snow), 0.1);
+  /* Sin fondo para mantener el gradiente azul del sidebar */
+}
+
+.duo-sidebar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  color: rgba(var(--color-snow), 0.85) !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  border-left: 4px solid transparent;
+}
+
+.duo-sidebar-nav .nav-item:hover {
+  background: rgba(var(--color-snow), 0.1);
+  color: rgba(var(--color-snow), 1);
+}
+
+.duo-sidebar-nav .nav-item.active {
+  background: rgba(var(--color-snow), 0.15);
+  color: rgba(var(--color-snow), 1);
+  border-left-color: var(--amsawal-tifinagh);
+  box-shadow: inset 4px 0 0 var(--amsawal-tifinagh);
+}
+
+.duo-sidebar-nav .nav-item svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * MAIN CONTENT — Full width (mobile-first: topbar + bottombar only)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* No padding-left since sidebar is hidden */
+.amsawal-immersive {
+  padding-left: 0;
+}
+
+/* Push page content below the fixed topbar */
+.duo-container {
+  padding-top: 76px;
+}
+
+.duo-stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * MOBILE — Sidebar becomes drawer, content goes full-width
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* Desktop: hide drawer toggle */
+.duo-drawer-toggle {
+  display: none !important;
+}
+
+/* Hide ugly drawer toggle button that appears at bottom left on desktop */
+button.duo-drawer-toggle[aria-label*="Abrir menú"] {
+  display: none !important;
+}
+
+/* Scroll to top button — fixed bottom right */
+.duo-scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: var(--amsawal-primary-dark);
+  color: rgba(var(--color-snow),1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--amsawal-shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: all var(--amsawal-duration-normal) var(--amsawal-ease-out);
+  z-index: calc(var(--amsawal-z-header) - 10);
+}
+
+.duo-scroll-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.duo-scroll-top:hover {
+  background: var(--amsawal-primary-dark);
+  transform: scale(1.1);
+}
+
+.duo-scroll-top:active {
+  transform: scale(0.95);
+}
+
+/* Container responsive adjustments */
+@media (max-width: 768px) {
+  .duo-container {
+    max-width: 100%;
+    padding: 72px 16px 100px;
+  }
+
+  .duo-topbar {
+    height: 56px;
+  }
+
+  .duo-stat-item {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .duo-topbar-logo {
+    height: 32px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .duo-stat-item {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  .duo-container {
+    padding: 68px 12px 100px;
+  }
+
+  .duo-topbar-stats {
+    gap: 4px;
+  }
+
+  .duo-topbar-stats .duo-stat-item {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile-first: compact topbar for small screens */
+@media (max-width: 640px) {
+  .duo-topbar {
+    height: 56px;
+    padding: 10px 12px;
+    padding-top: calc(10px + env(safe-area-inset-top));
+  }
+
+  .duo-topbar-logo {
+    height: 32px;
+  }
+
+  .duo-topbar-stats {
+    gap: 6px;
+  }
+
+  .duo-topbar-stats .duo-stat-item {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+    min-width: 36px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Show only critical stats on mobile: streak + lives */
+  .duo-topbar-due,
+  .duo-stat-coins {
+    display: none;
+  }
+
+  /* Compact buttons */
+  .duo-topbar-tts,
+  .duo-topbar-theme {
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+/* F12-1: Page transition animations */
+.amsawal-page {
+  animation: duo-page-enter 400ms var(--amsawal-ease-out);
+}
+
+@keyframes duo-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animations for child elements */
+.amsawal-page > * {
+  animation: duo-stagger-enter 400ms var(--amsawal-ease-out) backwards;
+}
+
+.amsawal-page > *:nth-child(1) { animation-delay: 0ms; }
+.amsawal-page > *:nth-child(2) { animation-delay: 50ms; }
+.amsawal-page > *:nth-child(3) { animation-delay: 100ms; }
+.amsawal-page > *:nth-child(4) { animation-delay: 150ms; }
+.amsawal-page > *:nth-child(5) { animation-delay: 200ms; }
+
+@keyframes duo-stagger-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .amsawal-page,
+  .amsawal-page > * {
+    animation: none;
+  }
+}
+
+/*-----------------------------------*\
+  #THEME FOOTER — Hide WordPress theme footer
+  Keep only the Amsawal navbar in footer
+\*-----------------------------------*/
+
+/* Hide theme footer (Twenty Twenty-Five, etc.) but preserve navbar */
+footer.wp-block-template-part,
+.wp-site-blocks > footer:not(:has(.navbar)),
+.site-footer:not(:has(.navbar)) {
+  display: none !important;
+}
+
+/* Hide theme header to avoid duplicate banner — Amsawal provides its own <header> */
+.site-header,
+.wp-site-blocks > header:not(:has(.duo-topbar)),
+body > header:not(.duo-topbar) {
+  display: none !important;
+}

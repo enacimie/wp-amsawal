@@ -1,0 +1,17 @@
+/* =========================================================================
+   Amsawal theme — overrides mínimos.
+   El diseño vive en el plugin (css/pure-js-style.css). Aquí solo
+   definimos layout del chrome del theme.
+   ========================================================================= */
+
+.amsawal-site-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+@media (max-width: 768px) {
+  .amsawal-site-main {
+    padding: 16px 12px;
+  }
+}

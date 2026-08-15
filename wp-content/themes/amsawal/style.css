@@ -1,0 +1,17 @@
+/*
+Theme Name: Amsawal
+Theme URI: https://amsawal.com
+Author: Eduardo Nacimiento
+Author URI: http://eduardonacimiento.com
+Description: Theme propio para Amsawal Reloaded. Usa el design system V6 (CSS custom properties) compartido con el plugin. Theme clásico para máxima compatibilidad con `the_content` filter.
+Version: 0.1.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+License: GPL3
+License URI: https://www.gnu.org/licenses/gpl.html
+Text Domain: amsawal
+*/
+
+/* Los estilos visuales viven en el plugin (css/pure-js-style.css) para
+   que un cambio en el design system se propague sin tocar el theme. */

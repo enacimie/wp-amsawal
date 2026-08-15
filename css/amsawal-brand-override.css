@@ -1,0 +1,40 @@
+/*───────────────────────────────────────────────────────────────────────
+ * AMSAWAL — Brand complementary styles
+ * 
+ * This file provides responsive tweaks and print styles.
+ * Core brand mapping is in pure-js-style.css (:root --duo-* aliases).
+ *───────────────────────────────────────────────────────────────────────*/
+
+/* Print styles */
+@media print {
+  .duo-sidebar,
+  .duo-topbar,
+  .duo-mobile-nav,
+  .duo-drawer-toggle,
+  .duo-drawer-scrim {
+    display: none !important;
+  }
+  
+  .amsawal-immersive {
+    padding-left: 0 !important;
+  }
+
+  .duo-container {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Focus — professional outline for accessibility */
+*:focus-visible {
+  outline: 3px solid var(--amsawal-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast tweaks */
+@media (prefers-contrast: more) {
+  * {
+    --amsawal-border: currentColor;
+  }
+}
+

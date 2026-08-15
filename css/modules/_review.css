@@ -1,0 +1,452 @@
+.duo-review-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.duo-review-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.duo-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.duo-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.duo-stat-card--urgent {
+  border-color: #dc2626;
+  background: linear-gradient(135deg, #fff 0%, #fef2f2 100%);
+}
+
+.duo-stat-card--medium {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #fff 0%, #fffbeb 100%);
+}
+
+.duo-stat-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--duo-bg, #f7fafc);
+  color: var(--amsawal-primary, #0099CC);
+}
+
+.duo-stat-card--urgent .duo-stat-icon {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.duo-stat-card--medium .duo-stat-icon {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.duo-stat-content {
+  flex: 1;
+}
+
+.duo-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  line-height: 1.2;
+}
+
+.duo-stat-card--urgent .duo-stat-value {
+  color: #dc2626;
+}
+
+.duo-stat-card--medium .duo-stat-value {
+  color: #d97706;
+}
+
+.duo-stat-label {
+  font-size: 14px;
+  color: var(--duo-text-light, #6b7280);
+  font-weight: 500;
+}
+
+.duo-review-actions {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.duo-review-actions .duo-btn--lg {
+  padding: 14px 32px;
+  font-size: 1.05rem;
+}
+
+.duo-review-lessons h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  margin-bottom: 16px;
+}
+
+.duo-lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.duo-lesson-card {
+  background: var(--duo-card, #fff);
+  border: 1px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.duo-lesson-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.duo-lesson-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.duo-lesson-num {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--duo-text-light, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.duo-lesson-score {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.duo-lesson-score--high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.duo-lesson-score--medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.duo-lesson-score--low {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.duo-lesson-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--duo-text, #1a1a1a);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.duo-btn--sm {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.duo-btn--outline {
+  background: transparent;
+  color: var(--duo-primary, #0099CC);
+  border: 2px solid var(--duo-primary, #0099CC);
+  box-shadow: none;
+}
+
+.duo-btn--outline:hover {
+  background: rgba(0, 153, 204, 0.08);
+  border-color: var(--duo-primary-dark, #007799);
+  color: var(--duo-primary-dark, #007799);
+}
+
+.duo-btn--outline:active {
+  transform: scale(0.95);
+}
+
+.duo-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--duo-text-light, #6b7280);
+  font-size: 16px;
+}
+
+.duo-review-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.duo-review-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.duo-review-modal-content {
+  position: relative;
+  background: var(--duo-card, #fff);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: duo-review-slide-up 300ms ease-out;
+}
+
+@keyframes duo-review-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.duo-review-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--duo-text-light, #6b7280);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 150ms ease;
+}
+
+.duo-review-modal-close:hover {
+  background: var(--duo-border, #e5e5e5);
+  color: var(--duo-text, #1a1a1a);
+}
+
+.duo-review-modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.duo-review-modal-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--duo-text, #1a1a1a);
+  margin-bottom: 12px;
+}
+
+.duo-review-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--duo-border, #e5e5e5);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.duo-review-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--duo-primary, #0099CC), var(--duo-primary-dark, #007799));
+  border-radius: 4px;
+  transition: width 300ms ease;
+  width: 0%;
+}
+
+.duo-review-progress-text {
+  font-size: 14px;
+  color: var(--duo-text-light, #6b7280);
+  font-weight: 600;
+}
+
+.duo-review-question {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--duo-text, #1a1a1a);
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.duo-review-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.duo-review-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--duo-card, #fff);
+  border: 2px solid var(--duo-border, #e5e5e5);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--duo-text, #1a1a1a);
+  transition: all 150ms ease;
+  text-align: left;
+  width: 100%;
+}
+
+.duo-review-option:hover {
+  border-color: var(--duo-primary, #0099CC);
+  background: rgba(0, 153, 204, 0.04);
+}
+
+.duo-review-option.selected {
+  border-color: var(--duo-primary, #0099CC);
+  background: rgba(0, 153, 204, 0.08);
+}
+
+.duo-review-option.correct {
+  border-color: #16a34a;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.duo-review-option.incorrect {
+  border-color: #dc2626;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.duo-review-option-letter {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--duo-border, #e5e5e5);
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.duo-review-option.correct .duo-review-option-letter {
+  background: #16a34a;
+  color: #fff;
+}
+
+.duo-review-option.incorrect .duo-review-option-letter {
+  background: #dc2626;
+  color: #fff;
+}
+
+.duo-review-feedback {
+  text-align: center;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.duo-review-feedback .dashicons {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.duo-review-feedback--correct {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.duo-review-feedback--incorrect {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.duo-review-actions-modal {
+  text-align: center;
+}
+
+.duo-review-summary {
+  text-align: center;
+  padding: 24px;
+}
+
+.duo-review-summary-score {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--duo-primary, #0099CC);
+  margin-bottom: 8px;
+}
+
+.duo-review-summary-label {
+  font-size: 16px;
+  color: var(--duo-text-light, #6b7280);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .duo-review-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .duo-lessons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .duo-review-modal-content {
+    padding: 24px 16px;
+  }
+
+  .duo-review-question {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .duo-review-stats {
+    grid-template-columns: 1fr;
+  }
+}

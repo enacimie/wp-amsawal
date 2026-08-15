@@ -1,0 +1,26 @@
+duolingoHTMLNuevo/
+
+# Environment / secrets
+.env
+
+# WordPress debug artifacts
+debug.log
+wp-content/debug.log
+
+# Docker data (never commit volumes)
+wp_data/
+db_data/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Research / paper materials (kept out of the public code repository)
+paper/
+paperFinal/
+rev2/
+enviadoFinal/
+capturas/
+amsawal-AI-capturas/
+

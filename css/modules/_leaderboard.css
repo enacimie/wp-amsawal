@@ -1,0 +1,982 @@
+/*-----------------------------------*\
+  #LEADERBOARD — Amsawal-style leagues
+\*-----------------------------------*/
+
+/* Leaderboard section */
+.duo-leader-section {
+  margin-bottom: 24px;
+}
+
+.duo-leader-toggle {
+  width: 100%;
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 16px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--amsawal-shadow);
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.duo-leader-toggle:hover {
+  background: var(--amsawal-bg);
+  border-color: var(--amsawal-primary);
+}
+
+.duo-leader-toggle::after {
+  content: '▾';
+  margin-left: auto;
+  font-size: 0.9rem;
+  transition: transform var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  opacity: 0.5;
+}
+
+.duo-leader-toggle:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+.duo-leader-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 0 16px;
+}
+
+.duo-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid var(--amsawal-border);
+  padding: 10px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--amsawal-text-muted);
+  cursor: pointer;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  text-align: center;
+}
+
+.duo-tab.active {
+  color: var(--amsawal-primary-text);
+  border-bottom-color: var(--amsawal-primary);
+}
+
+.duo-tab:hover {
+  color: var(--amsawal-primary);
+  background: var(--amsawal-bg);
+}
+
+.duo-tab-content {
+  display: none;
+}
+
+.duo-tab-content.active {
+  display: block;
+}
+
+/* Leader cards */
+.duo-leader-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.duo-leader-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Default: white card for light backgrounds */
+  background: var(--amsawal-card);
+  border-radius: var(--amsawal-radius);
+  padding: 12px 16px;
+  box-shadow: var(--amsawal-shadow);
+  transition: transform var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  border: 2px solid var(--amsawal-border);
+}
+
+/* When inside sidebar, use semi-transparent card with white text */
+.duo-league-summary .duo-leader-card {
+  background: rgba(var(--color-snow),0.08) !important;
+  border: 2px solid rgba(var(--color-snow),0.15) !important;
+  box-shadow: none !important;
+}
+
+.duo-league-summary .duo-leader-name {
+  color: rgba(var(--color-snow),1) !important;
+  font-weight: 700;
+}
+
+.duo-league-summary .duo-leader-score {
+  color: var(--amsawal-tifinagh) !important;
+  font-weight: 700;
+}
+
+.duo-league-summary .duo-leader-rank {
+  color: rgba(var(--color-snow),0.9) !important;
+}
+
+.duo-leader-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--amsawal-shadow-lg);
+}
+
+/* Sidebar leaderboard hover */
+.duo-league-summary .duo-leader-card:hover {
+  background: rgba(var(--color-snow),0.12) !important;
+  border-color: rgba(var(--color-snow),0.2) !important;
+}
+
+.duo-leader-card--me {
+  background: rgba(var(--color-primary), 0.05);
+  border: 2px solid var(--amsawal-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.12);
+}
+
+.duo-leader-card--far {
+  margin-top: 4px;
+  border: 2px dashed var(--amsawal-border);
+  background: var(--amsawal-bg);
+}
+
+.duo-leader-rank {
+  font-size: 1.3rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-leader-avatar {
+  flex-shrink: 0;
+}
+
+.duo-leader-avatar img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--amsawal-border);
+}
+
+.duo-leader-card--me .duo-leader-avatar img {
+  box-shadow: 0 0 0 3px var(--amsawal-primary);
+}
+
+.duo-leader-name {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--amsawal-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.duo-leader-score {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--amsawal-tifinagh);
+  white-space: nowrap;
+}
+
+.duo-leader-total {
+  font-size: 0.875rem;
+  color: var(--amsawal-text-muted);
+  font-weight: 600;
+}
+
+/*-----------------------------------*\
+  #LEADERBOARD COMPONENTS
+\*-----------------------------------*/
+
+.duo-leaderboard-refresh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--amsawal-primary);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+.duo-leaderboard-refresh:hover {
+  background: rgba(var(--color-primary), 0.08);
+  border-color: rgba(var(--color-primary), 0.2);
+  transform: rotate(90deg);
+}
+
+.duo-leaderboard-refresh:active {
+  transform: scale(0.9);
+}
+
+/* Refresh button inside sidebar leaderboard */
+.duo-league-summary .duo-leaderboard-refresh {
+  color: rgba(var(--color-snow), 0.9);
+  width: 28px;
+  height: 28px;
+}
+
+.duo-league-summary .duo-leaderboard-refresh:hover {
+  background: rgba(var(--color-snow), 0.1);
+  border-color: rgba(var(--color-snow), 0.2);
+}
+
+.duo-leaderboard-live-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--amsawal-success);
+  border-radius: 50%;
+  border: 2px solid var(--amsawal-card);
+  animation: duo-pulse 2s var(--amsawal-ease-in-out) infinite;
+}
+
+@keyframes duo-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-leaderboard-live-dot {
+    animation: none;
+  }
+}
+
+/* Leaderboard container */
+.duo-leaderboard {
+  background: var(--amsawal-card);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 20px;
+  box-shadow: var(--amsawal-shadow);
+}
+
+.duo-leaderboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--amsawal-border);
+}
+
+.duo-leaderboard-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+  margin: 0;
+}
+
+.duo-leaderboard-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.duo-leaderboard-tab {
+  flex: 1;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid var(--amsawal-border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--amsawal-text-muted);
+  cursor: pointer;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  text-align: center;
+}
+
+.duo-leaderboard-tab.active {
+  color: var(--amsawal-primary-text);
+  border-bottom-color: var(--amsawal-primary);
+}
+
+.duo-leaderboard-tab:hover {
+  color: var(--amsawal-primary);
+  background: var(--amsawal-bg);
+}
+
+/* Leader list */
+.duo-leader-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/*-----------------------------------*\
+  #LEADERBOARD (shortcode component)
+  Uses duo-leaderboard-* classes (PHP shortcode + AJAX)
+\*-----------------------------------*/
+
+.duo-leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* Needed for virtualized cards (position: absolute) to anchor correctly. */
+  position: relative;
+}
+
+.duo-leaderboard-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius);
+  padding: 12px 16px;
+  box-shadow: var(--amsawal-shadow);
+  transition: transform var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+.duo-leaderboard-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--amsawal-shadow-lg);
+}
+
+.duo-leaderboard-card--me {
+  background: rgba(var(--color-primary), 0.05);
+  border-color: var(--amsawal-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.12);
+}
+
+.duo-leaderboard-card--far {
+  margin-top: 4px;
+  border: 2px dashed var(--amsawal-border);
+  background: var(--amsawal-bg);
+}
+
+.duo-leaderboard-rank {
+  font-size: 1.3rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-leaderboard-avatar {
+  flex-shrink: 0;
+}
+
+.duo-leaderboard-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--amsawal-border);
+}
+
+.duo-leaderboard-avatar-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--amsawal-bg);
+  border: 2px solid var(--amsawal-border);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-leaderboard-name {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--amsawal-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.duo-leaderboard-xp {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--amsawal-tifinagh);
+  white-space: nowrap;
+}
+
+.duo-leaderboard-change {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.duo-leaderboard-change--up {
+  color: var(--amsawal-success);
+}
+
+.duo-leaderboard-change--down {
+  color: var(--amsawal-error);
+}
+
+@keyframes duo-leaderboard-flash {
+  0%   { background: rgba(var(--color-owl), 0.2); }
+  100% { background: transparent; }
+}
+
+.duo-leaderboard-card--flash {
+  animation: duo-leaderboard-flash 1.2s ease-out;
+}
+
+/*-----------------------------------*\
+  #QUESTS — Daily challenges
+\*-----------------------------------*/
+
+/* Quest Cards — Daily challenges */
+.duo-quest-section {
+  margin-bottom: 28px;
+}
+
+.duo-quest-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.duo-quest-section-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-quest-section-header a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--amsawal-primary);
+  text-decoration: none;
+}
+
+.duo-quest-card {
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: border-color var(--amsawal-duration-fast) var(--amsawal-ease-out),
+              box-shadow var(--amsawal-duration-fast) var(--amsawal-ease-out);
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.duo-quest-card:hover {
+  border-color: var(--amsawal-primary);
+  box-shadow: var(--amsawal-shadow-lg);
+}
+
+.duo-quest-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amsawal-bg);
+  border-radius: var(--amsawal-radius-sm);
+  flex-shrink: 0;
+}
+
+.duo-quest-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.duo-quest-title {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-quest-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.duo-quest-progress-bar-wrapper {
+  flex: 1;
+  height: 8px;
+  background: var(--amsawal-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.duo-quest-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amsawal-primary), var(--amsawal-accent));
+  border-radius: 4px;
+  transition: width 400ms var(--amsawal-ease-out);
+}
+
+.duo-quest-progress-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--amsawal-text-muted);
+  white-space: nowrap;
+}
+
+/* Streak Ring — SVG progress circle */
+.duo-streak-ring {
+  width: 36px; height: 36px;
+  display: block; position: relative; flex-shrink: 0;
+}
+.duo-streak-ring__track {
+  fill: none;
+  stroke: var(--amsawal-border);
+  stroke-width: 4;
+}
+.duo-streak-ring__progress {
+  fill: none;
+  stroke: var(--amsawal-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 800ms var(--amsawal-ease-out);
+  animation: streak-pulse 3s var(--amsawal-ease-in-out) infinite;
+}
+@keyframes streak-pulse {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  50%      { filter: drop-shadow(0 0 4px rgba(var(--color-primary), 0.5)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-leaderboard-streak-circle {
+    animation: none;
+  }
+}
+
+/* F7-9: High contrast mode */
+@media (prefers-contrast: more) {
+  .duo-leader-card,
+  .duo-leader-card--me,
+  .duo-leader-card--far {
+    border-width: 3px;
+  }
+
+  .duo-leader-toggle {
+    border-width: 3px;
+  }
+
+  .duo-tab,
+  .duo-leaderboard-tab {
+    border-bottom-width: 4px;
+  }
+
+  .duo-quest-card {
+    border-width: 3px;
+  }
+
+  .duo-leaderboard {
+    border: 2px solid var(--amsawal-border);
+  }
+}
+
+/*-----------------------------------*\
+  #LEAGUES — Seasonal league card
+\*-----------------------------------*/
+
+.duo-league-card {
+  background: var(--amsawal-card);
+  border-radius: var(--amsawal-radius-lg);
+  padding: 20px;
+  box-shadow: var(--amsawal-shadow);
+  border: 2px solid var(--amsawal-border);
+}
+
+.duo-league-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.duo-league-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.duo-league-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.duo-league-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+}
+
+.duo-league-season {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--amsawal-text-muted);
+}
+
+.duo-league-timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--amsawal-bg);
+  border-radius: var(--amsawal-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--amsawal-text-muted);
+  flex-shrink: 0;
+}
+
+.duo-league-timer-icon {
+  font-size: 1rem;
+}
+
+.duo-league-progress {
+  margin-bottom: 14px;
+}
+
+.duo-league-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--amsawal-text-muted);
+  margin-bottom: 6px;
+}
+
+.duo-league-progress-bar-wrapper {
+  height: 6px;
+  background: var(--amsawal-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.duo-league-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amsawal-primary), var(--amsawal-accent));
+  border-radius: 3px;
+  transition: width 600ms var(--amsawal-ease-out);
+}
+
+.duo-league-position {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--amsawal-text);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+/* Tier ladder */
+.duo-league-tiers {
+  display: flex;
+  gap: 6px;
+}
+
+.duo-league-tier {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: var(--amsawal-radius-sm);
+  background: var(--amsawal-bg);
+  border: 2px solid transparent;
+  transition: all var(--amsawal-duration-fast) var(--amsawal-ease-out);
+}
+
+.duo-league-tier--active {
+  border-color: var(--tier-color, var(--amsawal-primary));
+  background: rgba(0, 0, 0, 0.03);
+  /* color-mix() fallback: semi-transparent primary overlay for tier highlight */
+  box-shadow: 0 0 0 2px rgba(var(--color-primary), 0.2);
+}
+
+/* Progressive enhancement: use color-mix() for modern browsers. */
+@supports (box-shadow: 0 0 0 2px color-mix(in srgb, red, transparent)) {
+  .duo-league-tier--active {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--tier-color, var(--amsawal-primary)) 20%, transparent);
+  }
+}
+
+.duo-league-tier-icon {
+  font-size: 1.2rem;
+}
+
+.duo-league-tier-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--amsawal-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.duo-league-tier--active .duo-league-tier-name {
+  color: var(--amsawal-text);
+}
+
+/* League login prompt */
+.duo-league-login {
+  text-align: center;
+  padding: 24px;
+  color: var(--amsawal-text-muted);
+  font-weight: 600;
+}
+
+/* High contrast */
+@media (prefers-contrast: more) {
+  .duo-league-card {
+    border-width: 3px;
+  }
+
+  .duo-league-tier {
+    border-width: 2px;
+  }
+
+  .duo-league-tier--active {
+    border-width: 3px;
+  }
+}
+
+/*-----------------------------------*\
+  #SKELETON LOADERS
+\*-----------------------------------*/
+
+.duo-leaderboard-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--amsawal-radius);
+  background: var(--amsawal-card);
+  border: 2px solid var(--amsawal-border);
+}
+
+.duo-leaderboard-skeleton::before {
+  content: '';
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--amsawal-border) 25%, var(--amsawal-bg) 50%, var(--amsawal-border) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.duo-leaderboard-skeleton::after {
+  content: '';
+  flex: 1;
+  height: 16px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--amsawal-border) 25%, var(--amsawal-bg) 50%, var(--amsawal-border) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  animation-delay: 0.1s;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-leaderboard-skeleton::after {
+    animation: none;
+  }
+  .duo-leaderboard-list--pulling::before {
+    animation: none;
+  }
+}
+
+/*-----------------------------------*\
+  #PULL-TO-REFRESH (mobile)
+\*-----------------------------------*/
+
+.duo-leaderboard-list--pulling {
+  position: relative;
+}
+
+.duo-leaderboard-list--pulling::before {
+  content: '↻';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amsawal-primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  animation: skeleton-shimmer 1s infinite;
+  z-index: 10;
+}
+
+/*-----------------------------------*\
+  #WS CONNECTION INDICATOR
+\*-----------------------------------*/
+
+.duo-leaderboard-live-dot.is-ws-connected {
+  background: var(--amsawal-primary);
+  animation: ws-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ws-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-primary), 0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(var(--color-primary), 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-leaderboard-live-dot.is-ws-connected {
+    animation: none;
+  }
+}
+
+/*-----------------------------------*\
+  #MOBILE RESPONSIVE
+\*-----------------------------------*/
+
+@media (max-width: 640px) {
+  .duo-leaderboard {
+    padding: 12px;
+    border-radius: var(--amsawal-radius);
+  }
+
+  .duo-leaderboard-header {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+
+  .duo-leaderboard-title {
+    font-size: 0.95rem;
+  }
+
+  .duo-leaderboard-tabs {
+    gap: 2px;
+  }
+
+  .duo-leaderboard-tab {
+    padding: 8px 6px;
+    font-size: 0.75rem;
+  }
+
+  .duo-leaderboard-card {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .duo-leaderboard-avatar img,
+  .duo-leaderboard-avatar-initials {
+    width: 36px;
+    height: 36px;
+  }
+
+  .duo-leaderboard-rank {
+    font-size: 1.1rem;
+    width: 30px;
+  }
+
+  .duo-leaderboard-name {
+    font-size: 0.85rem;
+  }
+
+  .duo-leaderboard-xp {
+    font-size: 0.8rem;
+  }
+
+  /* League card mobile */
+  .duo-league-card {
+    padding: 14px;
+  }
+
+  .duo-league-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .duo-league-tiers {
+    gap: 4px;
+  }
+
+  .duo-league-tier {
+    padding: 6px 2px;
+  }
+
+  .duo-league-tier-name {
+    font-size: 0.875rem;
+  }
+}
+
+/*-----------------------------------*\
+  #HIGH CONTRAST MODE
+\*-----------------------------------*/
+
+@media (prefers-contrast: more) {
+  .duo-leaderboard-skeleton::before,
+  .duo-leaderboard-skeleton::after {
+    animation: none;
+    background: var(--amsawal-text-muted);
+  }
+
+  .duo-leaderboard-skeleton {
+    border-width: 3px;
+  }
+
+  .duo-leaderboard-tab[aria-selected="true"] {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+/*-----------------------------------*\
+  #REDUCED MOTION
+\*-----------------------------------*/
+
+@media (prefers-reduced-motion: reduce) {
+  .duo-leaderboard-skeleton::before,
+  .duo-leaderboard-skeleton::after {
+    animation: none;
+  }
+
+  .duo-leaderboard-card--flash {
+    animation: none;
+  }
+
+  .duo-leaderboard-live-dot.is-ws-connected {
+    animation: none;
+  }
+
+  .duo-leaderboard-list--pulling::before {
+    animation: none;
+  }
+}

@@ -1,0 +1,58 @@
+/*-----------------------------------*\
+  #PRINT STYLESHEET — F7-15
+  Oculta elementos interactivos al imprimir
+\*-----------------------------------*/
+
+@media print {
+  /* Ocultar navegación y elementos interactivos */
+  .duo-sidebar,
+  .duo-topbar,
+  .duo-mobile-nav,
+  .duo-tutor,
+  .duo-tutor-toggle,
+  .duo-toast-stack,
+  .duo-feedback-bar,
+  .duo-modal-overlay,
+  .duo-confetti-canvas,
+  .duo-particle-container,
+  .duo-scroll-top,
+  .duo-drawer-toggle,
+  .duo-drawer-scrim,
+  button,
+  .duo-unit-guide-btn,
+  .duo-test-btn,
+  .duo-info-btn,
+  .duo-course-btn,
+  .duo-node-circle {
+    display: none !important;
+  }
+
+  /* Ajustar layout para impresión */
+  .amsawal-immersive {
+    padding-left: 0 !important;
+  }
+
+  .duo-container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Mostrar contenido principal */
+  .duo-path,
+  .duo-node,
+  .duo-node-label {
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  /* Ajustar colores para impresión */
+  body {
+    background: rgba(var(--color-snow),1);
+    color: rgba(var(--color-eclipse),1);
+  }
+
+  .duo-node-circle {
+    border: 2px solid rgba(var(--color-eclipse),1);
+    box-shadow: none;
+  }
+}
